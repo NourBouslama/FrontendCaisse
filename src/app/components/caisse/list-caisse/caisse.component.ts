@@ -20,7 +20,7 @@ export class CaisseComponent implements OnInit {
           this.caisses = livs;
         });
   }
-  desactiverMode(p: Caisse) {
+  desactiverCaisse(p: Caisse) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
       this.caisseService.DesactiverCaisse(p.numC).subscribe(() => {
@@ -31,7 +31,7 @@ export class CaisseComponent implements OnInit {
     });
   }
 
-  activerMode(p: Caisse) {
+  activerCaisse(p: Caisse) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
       this.caisseService.ActiverCaisse(p.numC).subscribe(() => {

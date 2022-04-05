@@ -38,6 +38,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     {label: 'ModePaiement', icon: 'pi pi-fw pi-table', routerLink: ['ModePaiement']},
                     {label: 'Caisse', icon: 'pi pi-fw pi-id-card', routerLink: ['Caisse']},
+                    {label: 'Affect Mode Paiement', icon: 'pi pi-fw pi-check-square', routerLink: ['/affect-mode/:id']},
                     {label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input']},
                     {label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel']},
                     {label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate']},
