@@ -1,0 +1,39 @@
+<div class="grid">
+	<div class="col-12">
+		<div class="card">
+			<h5>Caisse</h5>
+			<p-table [value]="caisses" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex align-items-center justify-content-between">
+                        <h2>Liste Des Caisses</h2>
+						<td><button pButton pRipple label="Nouvelle caisse" type="button" icon="pi pi-plus" class="p-button-rounded p-button-primary" routerLink="/add-caisse"></button></td>
+                        
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header" >
+                    <tr>
+                        <th>Numero caisse</th>
+                        <th>Etat</th>
+                    
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-caisse>
+                    <tr>
+                        <td>{{caisse.numC}}</td>
+                        <td>{{caisse.etat}}</td>
+                        <td><button *ngIf="caisse.etat === 'desactiver'" pButton pRipple type="button" label="desactiver"  class="p-button-rounded p-button-warning" ></button>
+                        <button *ngIf="caisse.etat === 'activé'" pButton pRipple type="button" label="activer" icon="pi pi-power-off" class="p-button-rounded p-button-warning" ></button></td>
+                        
+                        <td><button pButton pRipple type="button" label="modifier" icon="pi pi-pencil" class="p-button-rounded p-button-success" ></button></td>
+            
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="flex align-items-center justify-content-between">
+                        In total there are {{modes ? modes.length : 0 }} modes.
+                    </div>
+                </ng-template>
+            </p-table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<div class="grid p-fluid">
+    <div class="col-12">
+        <div class="card">
+
+            <h2>Affecter les modes de paiement à la caisse</h2>
+            <br>
+
+
+            <h5>Numéro caisse</h5>
+            <span class="p-float-label">
+                <input pInputText id="username" type="text" [(ngModel)]="affect.caisse"/>
+            </span>
+            <br><br>
+          
+<h5>Les modes de paiements</h5>
+            <span class="p-float-label">
+                <p-listbox [options]="modes" [checkbox]="true" [multiple]="true" [(ngModel)]="selectedModesCode">
+                    <ng-template let-mode pTemplate="item">
+                        <div >
+                            <div>{{mode.libelle}}</div>
+                        </div>
+                    </ng-template>
+                </p-listbox>
+            </span>
+            <br><br>
+          
+         
+            <span>
+                <td><button pButton pRipple label="ajouter" type="submit" icon="pi pi-plus"
+                        class="p-button-rounded p-button-primary"  routerLink="/Caisse" (click)="affectMode"></button></td>
+
+            </span>
+            <!--
+<h5>Etat</h5>
+			<span class="p-float-label">
+				<input pInputText id="username" type="text" />
+			</span>
+        -->
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+</div>
