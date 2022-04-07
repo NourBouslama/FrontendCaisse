@@ -36,6 +36,14 @@ import { UpdateModeComponent } from './components/Mode_Paiement/update-mode/upda
 import { AddCaisseComponent } from './components/caisse/add-caisse/add-caisse.component';
 import { UpdateCaisseComponent } from './components/caisse/update-caisse/update-caisse.component';
 import { AffectModeComponent } from './components/caisse/affect-mode/affect-mode.component';
+import { ListCaissierComponent } from './components/caissier/list-caissier/list-caissier.component';
+import { ListAgentComponent } from './components/agent/list-agent/list-agent.component';
+import { AddCaissierComponent } from './components/caissier/add-caissier/add-caissier.component';
+import { UpdateCaissierComponent } from './components/caissier/update-caissier/update-caissier.component';
+import { AddAgentComponent } from './components/agent/add-agent/add-agent.component';
+import { UpdateAgentComponent } from './components/agent/update-agent/update-agent.component';
+import { ConsulterAgentComponent } from './components/agent/consulter-agent/consulter-agent.component';
+import { ConsulterCaissierComponent } from './components/caissier/consulter-caissier/consulter-caissier.component';
 
 @NgModule({
     imports: [
@@ -45,12 +53,20 @@ import { AffectModeComponent } from './components/caisse/affect-mode/affect-mode
                 children: [
                     {path: '', component: DashboardComponent},
                     {path: 'ModePaiement', component: ModeComponent},
+                    {path: 'add-mode', component: AddModeComponent},
                     {path: 'Update-Mode/:id', component: UpdateModeComponent},
                     {path: 'Caisse', component: CaisseComponent},
-                    {path: 'add-mode', component: AddModeComponent},
                     {path: 'add-caisse', component: AddCaisseComponent},
-                    {path: 'affect-mode/:id', component: AffectModeComponent},
                     {path: 'Update-Caisse/:id', component: UpdateCaisseComponent},
+                    {path: 'affect-mode/:id', component: AffectModeComponent},
+                    {path: 'Caissier', component: ListCaissierComponent},
+                    {path: 'add-caissier', component: AddCaissierComponent},
+                    {path: 'consulter-caissier/:matricule', component: ConsulterCaissierComponent},
+                    {path: 'Update-caissier/:matricule', component: UpdateCaissierComponent},
+                    {path: 'Agent', component: ListAgentComponent},
+                    {path: 'add-agent', component: AddAgentComponent},
+                    {path: 'consulter-agent/:matricule', component: ConsulterAgentComponent},
+                    {path: 'Update-agent/:matricule', component: UpdateAgentComponent},
                     {path: 'uikit/formlayout', component: FormLayoutComponent},
                     {path: 'uikit/input', component: InputComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelComponent},

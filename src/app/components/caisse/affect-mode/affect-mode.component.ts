@@ -12,29 +12,41 @@ import { ModeService } from 'src/app/service/mode.service';
   styleUrls: ['./affect-mode.component.scss']
 })
 export class AffectModeComponent implements OnInit {
-  modes:any=[];
+  modesPaiement: any = [];
   //currentCaisse = new AffectMode();
-  affect =new AffectMode();
+  affect = new AffectMode();
   selectedModesCode: number[];
-  constructor(private activatedRoute: ActivatedRoute,private caisseService:CaisseService,private modeService: ModeService,private router :Router) { }
+  modes: ModePaiement[];
+  newCaisse= new Caisse();
+  constructor(private activatedRoute: ActivatedRoute, private caisseService: CaisseService, private modeService: ModeService, private router: Router) { }
 
   ngOnInit(): void {
-    /*this.caisseService.consulterCaisse(this.activatedRoute.snapshot.params.id).
-    subscribe( liv =>{ this.currentCaisse = liv; } ) ;*/
+    /*this.caisseService.consulterCaisse(this.activatedRoute.snapshot.params.id).subscribe( liv =>{ this.currentCaisse = liv; } ) ;*/
     this.onSelectMode();
+    console.log(this.modes);
   }
-  onSelectMode(){
-    this.modeService.listeModes().subscribe(response=>{
+  onSelectMode() {
+    this.modeService.listeModes().subscribe(response => {
       console.log(response)
-      this.modes = response;
-      
-    }); 
+      this.modesPaiement = response;
+
+    });
   }
-  affectMode(){
+  affectMode() {
     this.caisseService.AffectMode(this.affect).subscribe(prod => {
       console.log(prod);
-      });
-      console.log(this.selectedModesCode);
+    });
+    console.log(this.selectedModesCode);
+  }
+  addCaisse(){
+    this.caisseService.ajouterCaisse(this.newCaisse)
+    .subscribe(prod => {
+    console.log(prod);
+    });
+  }
+
+  onSelectAll(items: any) {
+    console.log('onSelectAll', items);
   }
 
 }

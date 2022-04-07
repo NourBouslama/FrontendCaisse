@@ -22,16 +22,15 @@ import { ModeService } from 'src/app/service/mode.service';
 })
 export class UpdateModeComponent implements OnInit {
   currentMode = new ModePaiement();
-  constructor(private activatedRoute: ActivatedRoute,
-    private modeService: ModeService,
-    private router :Router) { }
+  constructor(private activatedRoute: ActivatedRoute,private modeService: ModeService,private router :Router) 
+  { }
 
   ngOnInit(): void {
     this.modeService.consulterMode(this.activatedRoute.snapshot.params.id).
-    subscribe( liv =>{ this.currentMode = liv; } ) ;
+    subscribe( mo =>{ this.currentMode = mo; } ) ;
   }
   updateMode() {
-    this.modeService.updateMode(this.currentMode).subscribe(liv => {
+    this.modeService.updateMode(this.currentMode).subscribe(mo => {
     this.router.navigate(['/ModePaiement']);
     },(error) => { alert("Problème lors de la modification !"); }
     );

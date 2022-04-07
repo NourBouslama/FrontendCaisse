@@ -18,8 +18,8 @@ export class AddModeComponent implements OnInit {
 
   addMode(){
     this.modeService.ajouterMode(this.newMode)
-    .subscribe(prod => {
-    console.log(prod);
+    .subscribe(mo => {
+    console.log(mo);
     });
     this.router.navigate(['/ModePaiement']);
     

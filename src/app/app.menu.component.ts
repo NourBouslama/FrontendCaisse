@@ -12,9 +12,7 @@ import { AppMainComponent } from './app.main.component';
                         <li app-menuitem *ngFor="let child of item.items" [item]="child" [index]="i" role="none"></li>
                     </ul>
                 </li>
-                <a href="https://www.primefaces.org/primeblocks-ng/#/">
-                    <img src="assets/layout/images/{{appMain.config.dark ? 'banner-primeblocks-dark' : 'banner-primeblocks'}}.png" alt="Prime Blocks" class="w-full mt-3"/>
-                </a>
+            
             </ul>
         </div>
     `
@@ -34,28 +32,30 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'UI Components',
+                label: 'Gestion :',
                 items: [
-                    {label: 'ModePaiement', icon: 'pi pi-fw pi-table', routerLink: ['ModePaiement']},
-                    {label: 'Caisse', icon: 'pi pi-fw pi-id-card', routerLink: ['Caisse']},
-                    {label: 'Affect Mode Paiement', icon: 'pi pi-fw pi-check-square', routerLink: ['/affect-mode/:id']},
-                    {label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input']},
-                    {label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel']},
-                    {label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate']},
-                    {label: 'Button', icon: 'pi pi-fw pi-mobile', routerLink: ['/uikit/button'], class: 'rotated-icon'},
-                    {label: 'List', icon: 'pi pi-fw pi-list', routerLink: ['/uikit/list']},
-                    {label: 'Tree', icon: 'pi pi-fw pi-share-alt', routerLink: ['/uikit/tree']},
-                    {label: 'Panel', icon: 'pi pi-fw pi-tablet', routerLink: ['/uikit/panel']},
+                    {label: 'ModePaiement', icon: 'pi pi-fw pi-money-bill', routerLink: ['ModePaiement']},
+                    {label: 'Caisse', icon: 'pi pi-fw pi-wallet', routerLink: ['Caisse']},
+                    {label: 'Caissier', icon: 'pi pi-fw pi-user', routerLink: ['Caissier']},
+                    {label: 'Agent', icon: 'pi pi-fw pi-user', routerLink: ['Agent']},
+                  //  {label: 'Affect Mode Paiement', icon: 'pi pi-fw pi-check-square', routerLink: ['/affect-mode/:id']},
+                   // {label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input']},
+                    //{label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel']},
+                  //  {label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate']},
+                    ///{label: 'Button', icon: 'pi pi-fw pi-mobile', routerLink: ['/uikit/button'], class: 'rotated-icon'},
+                   // {label: 'List', icon: 'pi pi-fw pi-list', routerLink: ['/uikit/list']},
+                   // {label: 'Tree', icon: 'pi pi-fw pi-share-alt', routerLink: ['/uikit/tree']},
+                   /* {label: 'Panel', icon: 'pi pi-fw pi-tablet', routerLink: ['/uikit/panel']},
                     {label: 'Overlay', icon: 'pi pi-fw pi-clone', routerLink: ['/uikit/overlay']},
                     {label: 'Media', icon: 'pi pi-fw pi-image', routerLink: ['/uikit/media']},
                     {label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], preventExact: true},
                     {label: 'Message', icon: 'pi pi-fw pi-comment', routerLink: ['/uikit/message']},
                     {label: 'File', icon: 'pi pi-fw pi-file', routerLink: ['/uikit/file']},
                     {label: 'Chart', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/uikit/charts']},
-                    {label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc']}
+                    {label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc']}*/
                 ]
             },
-            {
+          /*  {
                 label:'Prime Blocks',
                 items:[
                     {label: 'Free Blocks', icon: 'pi pi-fw pi-eye', routerLink: ['/blocks'], badge: 'NEW'},
@@ -133,7 +133,7 @@ export class AppMenuComponent implements OnInit {
                         label: 'View Source', icon: 'pi pi-fw pi-search', url: ['https://github.com/primefaces/sakai-ng'], target: '_blank'
                     }
                 ]
-            }
+            }*/
         ];
     }
 

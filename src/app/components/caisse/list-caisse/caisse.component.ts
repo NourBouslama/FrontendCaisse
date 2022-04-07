@@ -9,16 +9,16 @@ import { CaisseService } from 'src/app/service/caisse.service';
   styleUrls: ['./caisse.component.scss']
 })
 export class CaisseComponent implements OnInit {
-   caisse : Caisse;
-   caisses : Caisse[];
+  caisse: Caisse;
+  caisses: Caisse[];
   constructor(private caisseService: CaisseService, private router: Router) { }
 
   ngOnInit(): void {
 
-      this.caisseService.listeCaisses().subscribe(livs => {
-          console.log(livs);
-          this.caisses = livs;
-        });
+    this.caisseService.listeCaisses().subscribe(cai => {
+      console.log(cai);
+      this.caisses = cai;
+    });
   }
   desactiverCaisse(p: Caisse) {
     let conf = confirm("Etes-vous sûr ?");

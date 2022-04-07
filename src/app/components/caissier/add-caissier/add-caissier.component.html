@@ -1,0 +1,38 @@
+<div class="grid p-fluid">
+	<div class="col-12">
+		<div class="card">
+            <div>
+            <button  pButton pRipple type="button"  class="p-button-secondary p-button-text mr-2 mb-2" [routerLink]="['/caissiers']" >Retour</button>
+            <h3 class="mb-0">Liste des Caissiers</h3>
+
+        </div>
+
+            <h5>Nom :</h5>
+			<span class="p-float-label">
+				<input pInputText id="nom" type="text"  [(ngModel)]="newCaissier.nom"/>
+
+			</span>
+            <h5>Prénom :</h5>
+			<span class="p-float-label">
+				<input pInputText id="prenom" type="text"  [(ngModel)]="newCaissier.prenom"/>
+
+			</span>
+            <h5>Email :</h5>
+			<span class="p-float-label">
+				<input pInputText id="email" placeholder="exemple@gmail.com" type="email"  [(ngModel)]="newCaissier.email"/>
+
+			</span>
+            <h5>Adresse :</h5>
+			<span class="p-float-label">
+				<input pInputText id="adresse" type="text"  [(ngModel)]="newCaissier.adresse" />
+
+			</span>
+
+<br><br>
+<br>
+<br>
+            <button pButton pRipple type="button" label="Ajouter" type="submit"  (click)="ajouterCaissier()" class="btn btn-success"></button>
+		</div>
+
+
+	</div>

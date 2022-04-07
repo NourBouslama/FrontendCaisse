@@ -147,6 +147,14 @@ import { UpdateModeComponent } from './components/Mode_Paiement/update-mode/upda
 import { AddCaisseComponent } from './components/caisse/add-caisse/add-caisse.component';
 import { UpdateCaisseComponent } from './components/caisse/update-caisse/update-caisse.component';
 import { AffectModeComponent } from './components/caisse/affect-mode/affect-mode.component';
+import { ListAgentComponent } from './components/agent/list-agent/list-agent.component';
+import { AddAgentComponent } from './components/agent/add-agent/add-agent.component';
+import { UpdateAgentComponent } from './components/agent/update-agent/update-agent.component';
+import { ListCaissierComponent } from './components/caissier/list-caissier/list-caissier.component';
+import { AddCaissierComponent } from './components/caissier/add-caissier/add-caissier.component';
+import { UpdateCaissierComponent } from './components/caissier/update-caissier/update-caissier.component';
+import { ConsulterAgentComponent } from './components/agent/consulter-agent/consulter-agent.component';
+import { ConsulterCaissierComponent } from './components/caissier/consulter-caissier/consulter-caissier.component';
 
 
 
@@ -289,6 +297,14 @@ import { AffectModeComponent } from './components/caisse/affect-mode/affect-mode
         AddCaisseComponent,
         UpdateCaisseComponent,
         AffectModeComponent,
+        ListAgentComponent,
+        AddAgentComponent,
+        UpdateAgentComponent,
+        ListCaissierComponent,
+        AddCaissierComponent,
+        UpdateCaissierComponent,
+        ConsulterAgentComponent,
+        ConsulterCaissierComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

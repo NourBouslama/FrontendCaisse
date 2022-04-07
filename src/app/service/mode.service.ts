@@ -18,6 +18,11 @@ export class ModeService {
     return this.http.get<ModePaiement[]>(this.apiURL+"/listerModePaiements");
   }
 
+  listeModesByEtat(name): Observable<any> {
+    const url = `${this.apiURL+"/listerModeByEtat"}/${name}`;
+    return this.http.get<ModePaiement[]>(url);
+  }
+
   ajouterMode(prod: ModePaiement): Observable<ModePaiement> {
     return this.http.post<ModePaiement>(this.apiURL+"/ajouterModePaiement", prod, httpOptions);
   }

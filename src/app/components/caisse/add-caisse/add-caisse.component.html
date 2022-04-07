@@ -1,51 +1,33 @@
 <div class="grid p-fluid">
     <div class="col-12">
         <div class="card">
-
-            <h2>Ajouter nouvelle caisse</h2>
+            <h2>Ajouter caisse</h2>
             <br>
-
-
-            <h5>Numéro caisse</h5>
+            <h5>Intitulé caisse</h5>
             <span class="p-float-label">
-                <input pInputText id="username" type="text" [(ngModel)]="newCaisse.numC" />
+                <input pInputText id="username" type="text" [(ngModel)]="newCaisse.intitule" />
             </span>
             <br><br>
-          <!--
-<h5>Les modes de paiements</h5>
-            <span class="p-float-label">
-                <p-listbox [options]="modes"  [(ngModel)]="selectedModes"  [checkbox]="true" [multiple]="true" >
-                    <ng-template let-mode pTemplate="item">
-                        <div >
-                            <div>{{mode.libelle}}</div>
-                        </div>
-                    </ng-template>
-                </p-listbox>
-            </span>
-            <br><br>
-          -->  
-         
+            <h5>Affecter les modes de paiement</h5>
+            <p-multiSelect [options]="modesPaiement" [(ngModel)]="newCaisse.modes" display="chip"
+                defaultLabel="Select modes" optionLabel="libelle" class="multiselect-custom">
+
+                <ng-template let-mode pTemplate="item">
+                    <div class="country-item">
+                        <div>{{mode.libelle}}</div>
+                    </div>
+                </ng-template>
+
+            </p-multiSelect>
+            <br><br><br>
+            <!--
+     {{selectedModes | json}}
+            -->
             <span>
                 <td><button pButton pRipple label="ajouter" type="submit" icon="pi pi-plus"
-                        class="p-button-rounded p-button-primary"  (click)="addCaisse()"  [routerLink]="['/affect-mode',newCaisse.numC]"></button></td>
-
+                        class="p-button-rounded p-button-primary" routerLink="/Caisse" (click)="addCaisse()"></button>
+                </td>
             </span>
-            <!--
-<h5>Etat</h5>
-			<span class="p-float-label">
-				<input pInputText id="username" type="text" />
-			</span>
-        -->
-
-
-
-
-
-
-
-
         </div>
-
-
     </div>
 </div>
