@@ -21,7 +21,9 @@ export class AddAgentComponent implements OnInit {
     .subscribe(agt => {
     console.log(agt);
     });
-    this.router.navigate(['/Agent']);
+    this.router.navigate(['/Agent']).then(() => {
+      window.location.reload();
+      });
 
   }
 

@@ -247,6 +247,7 @@ import { ConsulterCaissierComponent } from './components/caissier/consulter-cais
         VirtualScrollerModule,
         AppCodeModule,
         StyleClassModule,
+        
     ],
     declarations: [
         AppComponent,

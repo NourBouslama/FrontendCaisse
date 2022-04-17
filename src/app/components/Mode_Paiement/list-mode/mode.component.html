@@ -24,11 +24,11 @@
                         <td>{{mode.libelle}}</td>
                         <td>{{mode.etatM}}</td>
                         <td>
-                        <button *ngIf="mode.etatM === 'desactivé'" pButton pRipple type="button" label="activer"  icon="pi pi-power-off" class="p-button-rounded p-button-success" (click)="activerMode(mode)"></button>
-                        <button *ngIf="mode.etatM === 'activé'" pButton pRipple type="button" label="desactiver"  class="p-button-rounded p-button-secondary" (click)="desactiverMode(mode)"></button>
+                        <button *ngIf="mode.etatM === 'desactivé'" pButton pRipple type="button" label="Activer"  icon="pi pi-power-off" class="p-button-rounded p-button-success" (click)="activerMode(mode)"></button>
+                        <button *ngIf="mode.etatM === 'activé'" pButton pRipple type="button" label="Désactiver"  class="p-button-rounded p-button-secondary" (click)="desactiverMode(mode)"></button>
                         </td>
                         
-                        <td><button pButton pRipple type="button" label="modifier" icon="pi pi-pencil" class="p-button-rounded p-button-warning" [routerLink]="['/Update-Mode',mode.code]"></button></td>
+                        <td><button pButton pRipple type="button" label="Modifier" icon="pi pi-pencil" class="p-button-rounded p-button-warning" [routerLink]="['/Update-Mode',mode.code]"></button></td>
             
                     </tr>
                 </ng-template>

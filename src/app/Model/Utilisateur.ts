@@ -1,5 +1,6 @@
 export class  Utilisateur {
-    matricule?:number;
+    idU?:number;
+    matricule?:String;
     nom?:String;
     prenom?:String;
     adresse?:String;

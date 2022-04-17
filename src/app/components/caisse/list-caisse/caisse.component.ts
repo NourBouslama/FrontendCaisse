@@ -17,13 +17,14 @@ export class CaisseComponent implements OnInit {
 
     this.caisseService.listeCaisses().subscribe(cai => {
       console.log(cai);
-      this.caisses = cai;
+      this.caisses = cai;  
+
     });
   }
   desactiverCaisse(p: Caisse) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
-      this.caisseService.DesactiverCaisse(p.numC).subscribe(() => {
+      this.caisseService.DesactiverCaisse(p.idC).subscribe(() => {
         console.log("caisse desactivé");
       });
     this.router.navigate(['/Caisse']).then(() => {
@@ -34,7 +35,7 @@ export class CaisseComponent implements OnInit {
   activerCaisse(p: Caisse) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
-      this.caisseService.ActiverCaisse(p.numC).subscribe(() => {
+      this.caisseService.ActiverCaisse(p.idC).subscribe(() => {
         console.log("caisse activé");
       });
     this.router.navigate(['/Caisse']).then(() => {

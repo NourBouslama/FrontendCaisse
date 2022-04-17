@@ -33,5 +33,9 @@ export class AddCaisseComponent implements OnInit {
     .subscribe(cai => {
     console.log(cai);
     });
+    this.router.navigate(['/Caisse']).then(() => {
+      window.location.reload();
+    });
+  
   }
 }

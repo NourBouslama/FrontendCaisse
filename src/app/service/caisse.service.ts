@@ -37,12 +37,12 @@ caisses : Caisse[];
 
   DesactiverCaisse(id: number) {
     const url = `${this.apiURL+"/desactiverCaisse"}/${id}`;
-    return this.http.put(url, httpOptions);
+    return this.http.put(url,httpOptions);
   }
 
   ActiverCaisse(id: number) {
     const url = `${this.apiURL+"/activerCaisse"}/${id}`;
-    return this.http.put(url, httpOptions);
+    return this.http.put(url,httpOptions);
   }
 
   AffectMode(c: AffectMode) {

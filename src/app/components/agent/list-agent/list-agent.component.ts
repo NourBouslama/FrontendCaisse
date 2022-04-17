@@ -24,7 +24,7 @@ export class ListAgentComponent implements OnInit {
   DesactiverAgent(g: Agent) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
-      this.agentService.desactiverAgent(g.matricule).subscribe(() => {
+      this.agentService.desactiverAgent(g.idU).subscribe(() => {
         console.log("agent Désactiver");
       });
     this.router.navigate(['/Agent']).then(() => {
@@ -35,7 +35,7 @@ export class ListAgentComponent implements OnInit {
   ActiverAgent(g: Agent) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
-      this.agentService.activerAgent(g.matricule).subscribe(() => {
+      this.agentService.activerAgent(g.idU).subscribe(() => {
         console.log("agent Activer");
       });
     this.router.navigate(['/Agent']).then(() => {

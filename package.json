@@ -7,7 +7,10 @@
         "build": "ng build",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
-        "administrateur-start":"ng serve --project=\"administrateur\" --port 4201"
+        "administrateur-start": "ng serve --project=\"administrateur\" --port 4201",
+        "caissier-start": "ng serve --project=\"caissier\" --port 4202",
+        "caissiers-start": "ng serve --project=\"caissiers\" --port 4203",
+        "caissierFront-start": "ng serve --project=\"caissierFront\" --port 4204"
     },
     "private": true,
     "dependencies": {

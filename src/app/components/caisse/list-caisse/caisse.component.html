@@ -24,16 +24,16 @@
                         <td>{{caisse.numC}}</td>
                         <td>{{caisse.intitule}}</td>
                         <td>{{caisse.etat}}</td>
-                        <td><button *ngIf="caisse.etat ==='desactivé'" pButton pRipple type="button" label="activer"
+                        <td><button *ngIf="caisse.etat ==='desactivé'" pButton pRipple type="button" label="Activer"
                                 icon="pi pi-power-off" class="p-button-rounded p-button-success"
                                 (click)="activerCaisse(caisse)"></button>
-                            <button *ngIf="caisse.etat === 'activé'" pButton pRipple type="button" label="desacactiver"
+                            <button *ngIf="caisse.etat === 'activé'" pButton pRipple type="button" label="Désactiver"
                                 class="p-button-rounded p-button-secondary" (click)="desactiverCaisse(caisse)"></button>
                         </td>
 
-                        <td><button pButton pRipple type="button" label="modifier" icon="pi pi-pencil"
+                        <td><button pButton pRipple type="button" label="Modifier" icon="pi pi-pencil"
                                 class="p-button-rounded p-button-warning"
-                                [routerLink]="['/Update-Caisse',caisse.numC]"></button></td>
+                                [routerLink]="['/Update-Caisse',caisse.idC]"></button></td>
 
                     </tr>
                 </ng-template>

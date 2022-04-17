@@ -21,7 +21,9 @@ export class AddModeComponent implements OnInit {
     .subscribe(mo => {
     console.log(mo);
     });
-    this.router.navigate(['/ModePaiement']);
+    this.router.navigate(['/ModePaiement']).then(() => {
+      window.location.reload();
+    });
     
   }
 

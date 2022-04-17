@@ -25,7 +25,7 @@ export class UpdateCaisseComponent implements OnInit {
   onSelectMode() {
     this.caisseService.consulterCaisse(this.activatedRoute.snapshot.params.id).
       subscribe(cai => { this.currentCaisse = cai; });
-    this.modeService.listeModes().subscribe(response => {
+    this.modeService.listeModesByEtat("active").subscribe(response => {
       console.log(response)
       this.modesPaiement = response;
     });

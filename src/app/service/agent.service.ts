@@ -34,8 +34,8 @@ export class AgentService {
     return this.http.put(url, httpOptions);
   }
 
-  consulterAgent(matricule: number): Observable<Agent> {
-    const url = `${this.apiURL}/consulterAgent/${matricule}`;
+  consulterAgent(idU: number): Observable<Agent> {
+    const url = `${this.apiURL}/consulterAgent/${idU}`;
     return this.http.get<Agent>(url);
   }
 

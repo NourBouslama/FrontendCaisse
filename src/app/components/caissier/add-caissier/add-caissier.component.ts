@@ -21,7 +21,9 @@ export class AddCaissierComponent implements OnInit {
     .subscribe(agt => {
     console.log(agt);
     });
-    this.router.navigate(['/Caissier']);
+    this.router.navigate(['/Caissier']).then(() => {
+      window.location.reload();
+      });
   }
 
 }

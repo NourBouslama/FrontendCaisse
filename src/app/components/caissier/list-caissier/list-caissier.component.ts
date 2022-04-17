@@ -26,7 +26,7 @@ export class ListCaissierComponent implements OnInit {
 {
 let conf = confirm("Voulez-vous vraiement désactiver ce caissier ?");
 if (conf)
-this.caissierService.desactiverCaissier(c.matricule).subscribe(() => {
+this.caissierService.desactiverCaissier(c.idU).subscribe(() => {
 console.log("caissier Désactiver");
 });
 this.router.navigate(['/Caissier']).then(() => {
@@ -38,7 +38,7 @@ ActiverCaissier(c: Caissier)
 {
 let conf = confirm("Voulez-vous vraiement activer ce caissier ?");
 if (conf)
-this.caissierService.activerCaissier(c.matricule).subscribe(() => {
+this.caissierService.activerCaissier(c.idU).subscribe(() => {
 console.log("caissier Activer");
 });
 this.router.navigate(['/Caissier']).then(() => {
