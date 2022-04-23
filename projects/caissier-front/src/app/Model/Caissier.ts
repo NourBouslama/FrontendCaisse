@@ -1,4 +1,5 @@
 export class Caissier{
+    idU?:number;
     matricule?:number;
     nom?:String;
     prenom?:String;

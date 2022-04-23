@@ -33,9 +33,7 @@ export class AffectModeComponent implements OnInit {
     });
   }
   affectMode() {
-    this.caisseService.AffectMode(this.affect).subscribe(prod => {
-      console.log(prod);
-    });
+
     console.log(this.selectedModesCode);
   }
   addCaisse(){

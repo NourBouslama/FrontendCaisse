@@ -31,10 +31,16 @@ export class ConsulterSessionComponent implements OnInit {
       this.encaiss = enc;
     });
 
-    this.encaissementService.listeEncaissementsByEtat("payer").subscribe(enc => {
+    this.encaissementService.listeEncaissementsByEtatETSession("payer",this.activatedRoute.snapshot.params.numS).subscribe(enc => {
       console.log(enc);
       this.list = enc;
       this.nbFactPayer=this.list.length;  
+    });
+
+    this.encaissementService.listeEncaissementsByEtatETSession("annuler",this.activatedRoute.snapshot.params.numS).subscribe(enc => {
+      console.log(enc);
+      this.list = enc;
+      this.nbFactAnnuler=this.list.length;  
     });
 /*
     this.sessionService.listeSession().subscribe(cai => {

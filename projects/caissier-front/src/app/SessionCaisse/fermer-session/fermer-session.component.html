@@ -22,7 +22,7 @@
              <br>
             <div class="field">
                 <h5>Fermer journal de caisse:
-                    <p-checkbox name="groupname" value="che" [checked]="FermerJournalCaisse(currentSession)"> </p-checkbox>
+                    <p-checkbox value="box" name="box" trueValue="cheked" (onChange)="FermerJournalCaisse(currentSession)"> </p-checkbox>
                  </h5>
             </div>
        </td>
@@ -37,7 +37,8 @@
                 </h5>
             </div>
         </div>
-        <p-table  >
+      
+         <p-table [value]="currentSession.caisse.modes" >
             <ng-template pTemplate="header">
                 <tr>
                         <th scope="col">Mode de paiement </th>
@@ -45,15 +46,46 @@
                         <th scope="col">Montant</th>
                  </tr>
             </ng-template>
+            <ng-template pTemplate="body" let-session>
+                <tr>
+                    <td>carte bancaire</td>
+                    <td>{{nb}}</td>
+                    <td></td>
+               </tr>
+               <tr>
+                <td>chéque</td>
+                <td>{{nb1}}</td>
+                <td></td>
+               </tr>
+            </ng-template>
+        </p-table> 
+        <!--
+      <p-table [value]="currentSession.caisse.modes" [style]="{'width': '20%'}">
+            <ng-template pTemplate="header">
+                <tr>
+                        <th scope="col">Mode de paiement </th>
+                        
+                 </tr>
+            </ng-template>
             <ng-template pTemplate="body" let-session >
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{session.libelle}}</td>
                </tr>
             </ng-template>
         </p-table>
-
+        <p-table [value]="currentSession.caisse.modes" >
+            <ng-template pTemplate="header">
+                <tr>
+                        <th scope="col">Mode de paiement </th>
+                 </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-session >
+                <tr>
+                    <td>{{session.libelle}}</td>
+               </tr>
+            </ng-template>
+        </p-table>
+ --> 
         <h3>Repartition des montant en espéce:</h3>
         <p-table (change)="Calculer()">
             <ng-template pTemplate="header">
@@ -62,7 +94,6 @@
                <td><input  pInputText id="matricule" type="number" [(ngModel)]="val"  [style]="{'width': '20%'}" />
                 *50 DTN=
                <input  pInputText id="matricul" type="number" placeholder="{{val*50}}" value="res"  [(ngModel)]="res" [style]="{'width': '30%'}" /></td>
-
                <td>Pièces</td>
                <td><input  pInputText id="matricu" type="number" [(ngModel)]="val1"  [style]="{'width': '20%'}" />
                 * 5 DTN =
@@ -144,7 +175,7 @@
         </ng-template>
           </p-table>
         <h3>Verification des montant Totale:</h3>
-        <p-table>
+        <p-table >
             <ng-template pTemplate="header">
             <tr>
                 <td> 

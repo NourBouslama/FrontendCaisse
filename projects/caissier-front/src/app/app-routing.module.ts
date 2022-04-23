@@ -28,10 +28,16 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
-import { ListSessionComponent } from './components/SessionCaisse/list-session/list-session.component';
-import { AddSessionComponent } from './components/SessionCaisse/add-session/add-session.component';
-import { ConsulterSessionComponent } from './components/SessionCaisse/consulter-session/consulter-session.component';
-import { FermerSessionComponent } from './components/SessionCaisse/fermer-session/fermer-session.component';
+import { ListSessionComponent } from './SessionCaisse/list-session/list-session.component';
+import { AddSessionComponent } from './SessionCaisse/add-session/add-session.component';
+import { ConsulterSessionComponent } from './SessionCaisse/consulter-session/consulter-session.component';
+import { FermerSessionComponent } from './SessionCaisse/fermer-session/fermer-session.component';
+import { ChercherFactureComponent } from './Facture/chercher-facture/chercher-facture.component';
+import { HistoriquePaiementComponent } from './Paiement/historique-paiement/historique-paiement.component';
+import { AnnulerPaiementComponent } from './Paiement/annuler-paiement/annuler-paiement.component';
+import { ListerFactureComponent } from './Facture/lister-facture/lister-facture.component';
+import { SaisirAvanceComponent } from './Paiement/saisir-avance/saisir-avance.component';
+
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -43,6 +49,12 @@ import { FermerSessionComponent } from './components/SessionCaisse/fermer-sessio
                     {path: 'add-session', component: AddSessionComponent},
                     {path: 'consulter-session/:numS', component: ConsulterSessionComponent},
                     {path: 'fermer-session/:numS', component: FermerSessionComponent},
+                    {path: 'listerFactures/:reference', component: ListerFactureComponent},
+                    {path: 'ChercherFacture', component: ChercherFactureComponent},
+                    {path: 'historiquePaiement', component: HistoriquePaiementComponent},
+                    {path: 'annulerPaiement', component: AnnulerPaiementComponent},
+                    {path: 'saisirAvance', component: SaisirAvanceComponent},
+
                     {path: 'uikit/formlayout', component: FormLayoutComponent},
                     {path: 'uikit/input', component: InputComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelComponent},

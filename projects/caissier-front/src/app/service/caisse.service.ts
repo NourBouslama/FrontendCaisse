@@ -13,8 +13,9 @@ const httpOptions = {
 })
 export class CaisseService {
   apiURL: string = 'http://localhost:8080/caisses/api';
-modes : ModePaiement[];
-caisses : Caisse[];
+  
+  modes : ModePaiement[];
+  caisses : Caisse[];
   constructor(private http : HttpClient) { }
 
   
@@ -23,10 +24,12 @@ caisses : Caisse[];
   }
 
   
-  listeCaissesByEtat(name): Observable<any> {
-    const url = `${this.apiURL+"/listerCaisseByEtat"}/${name}`;
+  listerCaisseParEtat(name): Observable<any> {
+    const url = `${this.apiURL+"/listerCaisseParEtat"}/${name}`;
     return this.http.get<Caisse[]>(url);
   }
+
+
 
 
   ajouterCaisse(prod: Caisse): Observable<Caisse> {

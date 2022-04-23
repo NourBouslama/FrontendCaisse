@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Encaissement } from '../Model/Encaissement';
-import { SessionCaisse } from '../Model/SessionCaisse';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,13 +20,22 @@ export class EncaissementService {
     return this.http.get<Encaissement[]>(this.apiURL + '/listerEncaissements');
   }
 
-  listeEncaissementsByEtat(name): Observable<any> {
-    const url = `${this.apiURL+"/listerEncaissementsByEtat"}/${name}`;
+  listeEncaissementsByEtatETSession(name,nums): Observable<any> {
+    const url = `${this.apiURL+"/listerEncaissementsParEtatETSession"}/${name}/${nums}`;
     return this.http.get<Encaissement[]>(url);
   }
   
   listeEncaissementsBySession(session : number): Observable<any> {
-    const url = `${this.apiURL+"/listerEncaissementsBySession"}/${session}`;
+    const url = `${this.apiURL+"/listerEncaissementsParSession"}/${session}`;
     return this.http.get<Encaissement[]>(url);
   }
+
+  listerEncaissementParEtatEtPaiementMode(etat:string,mode:string):Observable<Encaissement[]> {
+    const url = `${this.apiURL+"/listerParEtatEtPaiementMode"}/${etat}/${mode}`;
+    return this.http.get<Encaissement[]>(url);
+  }
+
+  ajouterEncaissement( encaissement: Encaissement):Observable<Encaissement>{
+    return this.http.post<Encaissement>(this.apiURL+'/ajouterEncaissement', encaissement, httpOptions);
+    }
 }

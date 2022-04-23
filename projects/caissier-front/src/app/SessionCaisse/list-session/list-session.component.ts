@@ -11,6 +11,9 @@ import { SessionService } from 'src/app/service/session.service';
 export class ListSessionComponent implements OnInit {
   sessionCaisse: SessionCaisse;
   sessionCaisses: SessionCaisse[];
+  res:SessionCaisse[];
+  display: boolean = false;
+
   constructor(private sessionService: SessionService, private router: Router) { }
 
   ngOnInit(): void {
@@ -32,14 +35,32 @@ export class ListSessionComponent implements OnInit {
   }
 
   ouvrirSession(p: SessionCaisse) {
-    let conf = confirm("Etes-vous sûr ?");
-    if (conf)
+   /* let conf = confirm("Etes-vous sûr ?");
+    if (conf)*/
+    this.sessionService.chercherByCaisseNumC("en cours",p.caisse.numC).subscribe(enc => {
+      this.res = enc;
+      console.log("res=",this.res.length);
+
+     // console.log(this.newSession.caisse.numC);
+   
+
+      if(this.res.length > 0){
+        this.display = true;
+     }
+     else{
       this.sessionService.OuvrirSession(p.numS).subscribe(() => {
         console.log("session ouvert");
+        this.router.navigate(['/session']).then(() => {
+          window.location.reload();
+        });
       });
-    this.router.navigate(['/session']).then(() => {
-      window.location.reload();
-    });
-  }
+      
+   
+     }
+    }); 
+}
+clickAlert(){
+  this.display = false;
 
+}
 }

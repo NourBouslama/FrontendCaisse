@@ -45,9 +45,7 @@ caisses : Caisse[];
     return this.http.put(url,httpOptions);
   }
 
-  AffectMode(c: AffectMode) {
-    return this.http.post<AffectMode>(this.apiURL+"/affecterMode", c, httpOptions);
-  }
+ 
 
  
 }

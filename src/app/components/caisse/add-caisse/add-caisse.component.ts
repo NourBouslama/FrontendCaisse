@@ -21,7 +21,7 @@ export class AddCaisseComponent implements OnInit {
     console.log(this.modes);
   }
   onSelectMode() {
-    this.modeService.listeModesByEtat("active").subscribe(response => {
+    this.modeService.listerModePaiementParEtat("active").subscribe(response => {
       console.log(response)
       this.modesPaiement = response;
 

@@ -44,6 +44,7 @@ import { AddAgentComponent } from './components/agent/add-agent/add-agent.compon
 import { UpdateAgentComponent } from './components/agent/update-agent/update-agent.component';
 import { ConsulterAgentComponent } from './components/agent/consulter-agent/consulter-agent.component';
 import { ConsulterCaissierComponent } from './components/caissier/consulter-caissier/consulter-caissier.component';
+import { ConsulterCaisseComponent } from './components/caisse/consulter-caisse/consulter-caisse.component';
 
 @NgModule({
     imports: [
@@ -58,6 +59,7 @@ import { ConsulterCaissierComponent } from './components/caissier/consulter-cais
                     {path: 'Caisse', component: CaisseComponent},
                     {path: 'add-caisse', component: AddCaisseComponent},
                     {path: 'Update-Caisse/:id', component: UpdateCaisseComponent},
+                    {path: 'Consulter-Caisse/:idC', component: ConsulterCaisseComponent},
                     {path: 'affect-mode/:id', component: AffectModeComponent},
                     {path: 'Caissier', component: ListCaissierComponent},
                     {path: 'add-caissier', component: AddCaissierComponent},

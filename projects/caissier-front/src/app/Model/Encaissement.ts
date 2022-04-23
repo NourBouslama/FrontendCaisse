@@ -7,5 +7,6 @@ export class Encaissement{
       montantE?:number;
       etat?:String;
       paiement?:Paiement;
-      session?:SessionCaisse;
+      session:SessionCaisse;
+     
 }

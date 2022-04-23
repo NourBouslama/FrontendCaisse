@@ -41,7 +41,7 @@
             <div class="field">
                 <h5>Date de fermeture :</h5>
 			<span class="col-12 mb-2 lg:col-3 lg:mb-0">
-				<input pInputText id="email" type="email"  [(ngModel)]="currentSession.datefermeture" readonly/>
+				<input pInputText id="email" type="email"  value="{{currentSession.datefermeture | date:'dd/MM/YYYY  HH:mm'}}" readonly/>
 
 			</span>
             </div>
@@ -56,7 +56,7 @@
               <div class="field mt-3">
                 <h5>Nombre de facture payés :</h5>
                 <span class="col-12 mb-2 lg:col-3 lg:mb-0">
-                    <input pInputText id="matricule" type="text"  [(ngModel)]="nbFactPayer" placeholder="{{nbFactPayer}}" readonly/>
+                    <input pInputText id="matricule" type="text"   value="{{nbFactPayer}}" readonly/>
     
                 </span>
               </div> 
@@ -66,7 +66,7 @@
                 <div class="field mt-3">
                     <h5>Nombre de facture annulée :</h5>
                     <span class="col-12 mb-2 lg:col-3 lg:mb-0">
-                        <input pInputText id="nom" type="text"  readonly/>
+                        <input pInputText id="nom" type="text"  value="{{nbFactAnnuler}}"  readonly/>
         
                     </span>
                 </div>
@@ -75,11 +75,11 @@
 
 
         </div>
-        <h3>Listes des mouvements:</h3>
+        <h3>Listes des encaissements:</h3>
         <p-table  [value]="encaiss">
             <ng-template pTemplate="header">
                 <tr>
-                        <th scope="col">Type </th>
+                   
                         <th scope="col">Etat</th>
                         <th scope="col">Heure de mouvement</th>
                         <th scope="col">Montant</th>
@@ -87,7 +87,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-encaissement >
                 <tr>
-                    <td>Encaissement</td>
+                
                     <td>{{encaissement.etat}}</td>
                     <td>{{encaissement.dateE | date:'dd/MM/YYYY  HH:mm'}}</td>
                     <td>{{encaissement.montantE}}</td>
