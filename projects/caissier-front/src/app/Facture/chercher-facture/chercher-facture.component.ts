@@ -97,6 +97,7 @@ export class ChercherFactureComponent implements OnInit {
                console.log(sess);
               this.newEncaissement.session = sess;
                this.Listemodes = sess.caisse.modes;
+               console.log(this.Listemodes);
                console.log('le mode choisi : ', this.newPaiement.modePaiement);
            });
    }
@@ -111,6 +112,13 @@ export class ChercherFactureComponent implements OnInit {
        this.newEncaissement.montantE = this.mts;
        this.newEncaissement.session.montantSession+=this.mts;
        this.newEncaissement.session.nbFacture += this.factlist.length;
+       //modifier la session
+       this.sessionCaisseService
+       .modifierSession(this.newEncaissement.session)
+       .subscribe((sess) => {
+
+       });
+
        this.encaissementService
            .ajouterEncaissement(this.newEncaissement)
            .subscribe((encai) => {
@@ -127,15 +135,20 @@ export class ChercherFactureComponent implements OnInit {
            .ajouterPaiement(this.newPaiement)
            .subscribe((paiement) => {
                console.log('le paiement ajouté', paiement);
+            //   this.factlist = this.Factures.filter((x) => x.isselected == true);
+
+               for (var i = 0; i < this.factlist.length; i++) {
+                   this.factlist[i].paiement=paiement;
+               }
                this.payerFactures(paiement.idP);
            });
    }
 
    payerFactures(idP: number) {
 
-       console.log('factlist=', this.factlist);
+       console.log('factlist aprés l ajoutation des paiements=', this.factlist);
        this.paiementService
-           .PayerFacture(this.factlist, idP)
+           .PayerFacture(this.factlist)
            .subscribe((agt) => {
                console.log('payement effectuée',agt);
            });

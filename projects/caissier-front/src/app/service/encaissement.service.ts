@@ -35,6 +35,11 @@ export class EncaissementService {
     return this.http.get<Encaissement[]>(url);
   }
 
+  listerEncaissementParNumSEtatEtPaiementMode(nums:number,etat:string,mode:string):Observable<Encaissement[]> {
+    const url = `${this.apiURL+"/listerParNumSEtEtatEtPaiementMode"}/${nums}/${etat}/${mode}`;
+    return this.http.get<Encaissement[]>(url);
+  }
+
   ajouterEncaissement( encaissement: Encaissement):Observable<Encaissement>{
     return this.http.post<Encaissement>(this.apiURL+'/ajouterEncaissement', encaissement, httpOptions);
     }

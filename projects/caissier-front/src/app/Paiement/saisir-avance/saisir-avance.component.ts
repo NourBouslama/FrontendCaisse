@@ -55,6 +55,7 @@ ajouter(){
 
 
     this.newEncaissement.session.montantSession+=this.newEncaissement.montantE;
+    this.newEncaissement.etat="avance"
     this.encaissementService
         .ajouterEncaissement(this.newEncaissement)
         .subscribe((encai) => {
@@ -66,8 +67,12 @@ ajouter(){
 
 ajouterPaiement(encaissement: Encaissement) {
 
-this.chercherClient();
     this.newPaiement.encaissement = encaissement;
+    this.newPaiement.etat = "avance";
+    this.clientService.chercherCaisse(this.referenceClient).subscribe(
+      (cli)=>{  this.newPaiement.cli=cli;
+   
+
     //this.newPaiement.cli=this.client;
     console.log( this.newPaiement);
     this.paiementService
@@ -76,12 +81,14 @@ this.chercherClient();
             console.log('le paiement ajouté', paiement);
           //  this.payerFactures(paiement.idP);
         });
+      }
+      )
 }
-chercherClient(){
+/*chercherClient(){
     this.clientService.chercherCaisse(this.referenceClient).subscribe(
         (cli)=>{  this.newPaiement.cli=cli;
         }
     )
-}
+}*/
 
 }

@@ -28,7 +28,7 @@ export class HistoriquePaiementComponent implements OnInit {
       this.paiementService.listerPaiements(nums).subscribe(paie => {
           console.log(paie);
           this.paiements=paie//.push(paie);
-          console.log(this.paiements[1].factures);
+         // console.log(this.paiements[1].factures);
 
           });
   }

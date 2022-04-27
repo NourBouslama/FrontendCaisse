@@ -19,13 +19,13 @@ export class AnnulerPaiementComponent implements OnInit {
     Factures:Facture[];
     //valeur pr contenir la liste des factures sélectionnées
     factlist:Facture[]=[];
-  
+
   isselected:boolean;
-  
+
   //la valeur de référence sélectionné
     reference:number;
-  
-  
+
+
     constructor(  private factureService: FactureService,private paiementService: PaiementService, private activatedRoute: ActivatedRoute,private router :Router) {
         this.ListeReference = [
             { label: "Référence Facture", value: 1, isSelected:false},
@@ -33,15 +33,15 @@ export class AnnulerPaiementComponent implements OnInit {
             { label: "Référence Contrat", value: 3, isSelected:false}
           ];
      }
-  
+
      ngOnInit(): void {
-  
+
      }
      chercherfacture()
      {
           console.log('le référence selectionné',this.selectedReference);
           console.log(this.reference);
-  
+
           if(this.selectedReference==1){
             this.factureService.chercherFactureRefFacture(this.reference).
             subscribe(fact => {
@@ -60,10 +60,10 @@ export class AnnulerPaiementComponent implements OnInit {
                 this.Factures = fact;
                 });
           }
-  
+
       }
-  
-  
+
+
   annulerPaiement()
     {
         this.factlist=this.Factures.filter(x=>x.isselected==true);
@@ -73,10 +73,10 @@ export class AnnulerPaiementComponent implements OnInit {
          console.log(agt);
         console.log("annulation ok");
         });
-        this.router.navigate(['/historiquePaiement']);
+      //  this.router.navigate(['/historiquePaiement']);
     }
-  
-  
+
+
   onChange()
   {
     console.log(this.Factures.filter(x=>x.isselected==true));

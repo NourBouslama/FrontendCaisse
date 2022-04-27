@@ -37,29 +37,62 @@
                 </h5>
             </div>
         </div>
-      
-         <p-table [value]="currentSession.caisse.modes" >
+<!--
+        <p-table [value]="currentSession.caisse.modes">
+            <ng-template  pTemplate="header">
+                <tr>
+                      <th>Mode Paiement</th>
+                      <th>Nombre</th>
+                      <th>Montant théorique</th>
+                      <th>Montant pratique</th>
+                      <th>Ecart</th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body"  let-session>
+
+          
+        
+                <tr>
+                    <th>{{session.libelle}}</th>
+                    <th>{{nb}}</th>
+                    <th [(ngModel)]="theorique">{{listerPaiementByEtatEtMode(currentSession.numS,session.libelle)}}</th>
+                    <th ><input type="number" [(ngModel)]="pratique" ></th>
+                    <th >{{ this.montant - pratique}}</th>
+                </tr>
+             
+            </ng-template>
+        </p-table>
+        
+        <p-table >
             <ng-template pTemplate="header">
                 <tr>
-                        <th scope="col">Mode de paiement </th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Montant</th>
-                 </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-session>
+                      <th>Mode Paiement</th>
+                      <th>Nombre</th>
+                      <th>Montant théorique</th>
+                      <th>Montant pratique</th>
+                      <th>Ecart</th>
+
+                </tr>
+            
+        
                 <tr>
-                    <td>carte bancaire</td>
-                    <td>{{nb}}</td>
+                    <th>{{this.currentSession.caisse.modes[0].libelle}}</th>
+                    <th>{{nb}}</th>
+                    <th [(ngModel)]="theorique">{{this.montant}}</th>
+                    <th ><input type="number" [(ngModel)]="pratique" ></th>
+                    <th >{{ this.montant - pratique}}</th>
+                </tr>
+                <tr>
+                    <td>chéque</td>
+                    <td>{{nb1}}</td>
                     <td></td>
-               </tr>
-               <tr>
-                <td>chéque</td>
-                <td>{{nb1}}</td>
-                <td></td>
-               </tr>
+                    <td><input type="number"></td>
+                    <td></td>
+                </tr>
             </ng-template>
-        </p-table> 
-        <!--
+        </p-table>
+        
       <p-table [value]="currentSession.caisse.modes" [style]="{'width': '20%'}">
             <ng-template pTemplate="header">
                 <tr>

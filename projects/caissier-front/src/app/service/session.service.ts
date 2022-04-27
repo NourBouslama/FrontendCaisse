@@ -69,6 +69,13 @@ export class SessionService {
   
   }
 
+  modifierSession(session: SessionCaisse) {
+    const url = `${this.apiURL+"/modifierSessionCaisse"}`;
+
+    return this.http.put(url, session, httpOptions);
+
+  }
+
 
 
 

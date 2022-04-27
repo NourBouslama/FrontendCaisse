@@ -156,6 +156,7 @@ import { UpdateCaissierComponent } from './components/caissier/update-caissier/u
 import { ConsulterAgentComponent } from './components/agent/consulter-agent/consulter-agent.component';
 import { ConsulterCaissierComponent } from './components/caissier/consulter-caissier/consulter-caissier.component';
 import { ConsulterCaisseComponent } from './components/caisse/consulter-caisse/consulter-caisse.component';
+import { AcceuilComponent } from './acceuil/acceuil.component';
 
 
 
@@ -308,6 +309,7 @@ import { ConsulterCaisseComponent } from './components/caisse/consulter-caisse/c
         ConsulterAgentComponent,
         ConsulterCaissierComponent,
         ConsulterCaisseComponent,
+        AcceuilComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

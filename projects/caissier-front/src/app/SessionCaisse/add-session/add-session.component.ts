@@ -62,7 +62,7 @@ export class AddSessionComponent implements OnInit {
       this.display = true;
      }
      else{
-
+      this.newSession.montantSession=this.newSession.montantInit;
        this.sessionService.ajouterSession(this.newSession)
        .subscribe(sess => {
        console.log(sess);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Checkbox } from 'primeng/checkbox';
+import { Encaissement } from 'src/app/Model/Encaissement';
 import { SessionCaisse } from 'src/app/Model/SessionCaisse';
 import { EncaissementService } from 'src/app/service/encaissement.service';
 import { SessionService } from 'src/app/service/session.service';
@@ -32,7 +33,10 @@ res:number;
 res2:number;
 nb:number;
 nb1:number;
-nombre:SessionCaisse[];
+nombre:Encaissement[]=[];
+
+pratique:number =0;
+montant:number ;
 
 box :Checkbox;
 
@@ -45,6 +49,34 @@ currentSession = new SessionCaisse();
   ngOnInit(): void {
     this.sessionService.consulterSession(this.activatedRoute.snapshot.params.numS).
     subscribe( sess =>{ this.currentSession = sess;
+
+     /* for(var e=0;e<this.currentSession.caisse.modes.length;e++){
+
+        this.encaissementService.listerEncaissementParNumSEtatEtPaiementMode(this.currentSession.numS,"payer",this.currentSession.caisse.modes[0].libelle).subscribe( encai =>{ 
+          this.nombre = encai;  
+          this.nb=this.nombre.length;
+          console.log("nb=",this.nombre);
+
+          for(var a=0;a<=this.nombre.length;a++){
+            this.montant=this.montant+this.nombre[a].montantE;
+          }
+
+        } ) ;
+      }*/
+
+     /* this.encaissementService.listerEncaissementParNumSEtatEtPaiementMode(this.currentSession.numS,"payer",this.currentSession.caisse.modes[0].libelle).
+      subscribe( encai =>{ 
+        this.nombre = encai; 
+        this.nb=this.nombre.length;
+        console.log("nb=",this.nombre);
+      } ) ;
+      this.encaissementService.listerEncaissementParNumSEtatEtPaiementMode(this.currentSession.numS,"payer","chéque").
+      subscribe( encai =>{ 
+        this.nombre = encai; 
+        this.nb1=this.nombre.length;
+        console.log("nb=",this.nombre);
+      } ) ;*/
+
       /*
 for(var n=0;n<this.currentSession.caisse.modes.length;n++){
 
@@ -55,7 +87,7 @@ for(var n=0;n<this.currentSession.caisse.modes.length;n++){
   } ) ;
 }*/
  
-this.encaissementService.listerEncaissementParEtatEtPaiementMode("payer",this.currentSession.caisse.modes[0].libelle).
+/*this.encaissementService.listerEncaissementParEtatEtPaiementMode("payer",this.currentSession.caisse.modes[0].libelle).
         subscribe( sess =>{ this.nombre = sess; 
           this.nb=this.nombre.length;
           console.log("nb=",this.nombre);
@@ -64,7 +96,7 @@ this.encaissementService.listerEncaissementParEtatEtPaiementMode("payer",this.cu
         subscribe( sess =>{ this.nombre = sess; 
           this.nb1=this.nombre.length;
           console.log("nb=",this.nombre);
-        } ) ;
+        } ) ;*/
        
      
       
@@ -106,11 +138,25 @@ this.encaissementService.listerEncaissementParEtatEtPaiementMode("payer",this.cu
     });
  
 }
-listerPaiementByEtatEtMode(e:String,m:String){
+listerPaiementByEtatEtMode(num:number,m:string):number{
 
-  this.encaissementService.listerEncaissementParEtatEtPaiementMode("payer","chéque").
+  /*this.encaissementService.listerEncaissementParEtatEtPaiementMode("payer","chéque").
   subscribe( sess =>{ this.nombre = sess; } ) ;
-  console.log(this.nombre);
+  console.log(this.nombre);*/
+
+
+    this.encaissementService.listerEncaissementParNumSEtatEtPaiementMode(num,"payer",m).subscribe( encai =>{ 
+      this.nombre = encai; 
+      this.nb=this.nombre.length;
+      console.log("nb=",this.nombre);
+
+      for(var a=0;a < this.nombre.length; a++){
+        this.montant+=this.nombre[a].montantE;
+      }
+
+    } ) ;
+    return this.montant;
+  
 }
   
 

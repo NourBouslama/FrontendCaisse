@@ -24,10 +24,10 @@ export class PaiementService {
       return this.http.post<Paiement>(this.apiURL+'/ajouterPaiement', paiement, httpOptions);
       }
 
-  PayerFacture(factures : Facture[],id : number) {
-          const url = `${this.apiURL}/payer/${id}`;
-          return this.http.put(url, factures, httpOptions);
-          }
+      PayerFacture(factures : Facture[]) {
+        const url = `${this.apiURL}/payer`;
+        return this.http.put(url, factures, httpOptions);
+        }
   AnnulerPaiement(factures : Facture[]):Observable<Paiement> {
               const url = `${this.apiURL}/annuler`;
               return this.http.put<Paiement>(url, factures, httpOptions);
