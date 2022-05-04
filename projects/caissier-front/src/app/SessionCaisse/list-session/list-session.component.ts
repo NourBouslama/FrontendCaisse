@@ -17,7 +17,7 @@ export class ListSessionComponent implements OnInit {
   constructor(private sessionService: SessionService, private router: Router) { }
 
   ngOnInit(): void {
-    this.sessionService.listeSession().subscribe(cai => {
+    this.sessionService.listeSessionByCaissierId(1).subscribe(cai => {
       console.log(cai);
       this.sessionCaisses = cai;
     });

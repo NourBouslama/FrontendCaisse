@@ -12,6 +12,8 @@ export class ListAgentComponent implements OnInit {
 
   agents: Agent[];
   agent: Agent;
+  display: boolean = false;
+  ok: boolean = false;
   constructor(private agentService: AgentService, private router: Router) { }
 
   ngOnInit(): void {
@@ -22,14 +24,15 @@ export class ListAgentComponent implements OnInit {
   }
 
   DesactiverAgent(g: Agent) {
-    let conf = confirm("Etes-vous sûr ?");
-    if (conf)
+    this.display=true;
+   // let conf = confirm("Etes-vous sûr ?");
+    if (this.ok==true){
       this.agentService.desactiverAgent(g.idU).subscribe(() => {
         console.log("agent Désactiver");
       });
-    this.router.navigate(['/Agent']).then(() => {
-      window.location.reload();
-    });
+
+    }
+     
   }
 
   ActiverAgent(g: Agent) {
@@ -42,6 +45,13 @@ export class ListAgentComponent implements OnInit {
       window.location.reload();
     });
   }
+
+  clickAlert(){
+    this.display = false;
+ }
+ valider(){
+  this.ok = true;
+}
 
 
 }

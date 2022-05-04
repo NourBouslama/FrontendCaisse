@@ -46,14 +46,18 @@ import { ConsulterAgentComponent } from './components/agent/consulter-agent/cons
 import { ConsulterCaissierComponent } from './components/caissier/consulter-caissier/consulter-caissier.component';
 import { ConsulterCaisseComponent } from './components/caisse/consulter-caisse/consulter-caisse.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
+import { ConnectionComponent } from './connection/connection.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            {path: '', component: ConnectionComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [
-                    {path: '', component: AcceuilComponent},
+                  //  {path: 'main', component: AppMainComponent},
+                    {path: 'acceuil', component: AcceuilComponent},
+                   
                     {path: 'ModePaiement', component: ModeComponent},
                     {path: 'add-mode', component: AddModeComponent},
                     {path: 'Update-Mode/:id', component: UpdateModeComponent},
@@ -94,6 +98,7 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
                     {path:'test/modes', component: ModesComponent},
                 ],
             },
+            {path: 'connection', component: ConnectionComponent},
             {path:'pages/landing', component: LandingComponent},
             {path:'pages/login', component: LoginComponent},
             {path:'pages/error', component: ErrorComponent},

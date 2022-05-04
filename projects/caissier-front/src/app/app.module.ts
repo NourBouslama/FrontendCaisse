@@ -149,6 +149,7 @@ import { ListerFactureComponent } from './Facture/lister-facture/lister-facture.
 import { AnnulerPaiementComponent } from './Paiement/annuler-paiement/annuler-paiement.component';
 import { HistoriquePaiementComponent } from './Paiement/historique-paiement/historique-paiement.component';
 import { SaisirAvanceComponent } from './Paiement/saisir-avance/saisir-avance.component';
+import { ConnectionComponent } from './connection/connection.component';
 
 @NgModule({
     imports: [
@@ -291,6 +292,7 @@ import { SaisirAvanceComponent } from './Paiement/saisir-avance/saisir-avance.co
         AnnulerPaiementComponent,
         HistoriquePaiementComponent,
         SaisirAvanceComponent,
+        ConnectionComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

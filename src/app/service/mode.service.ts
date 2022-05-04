@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ModePaiement } from '../Model/ModePaiement';
+import { AuthentifierService } from './authentifier.service';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -12,37 +13,72 @@ const httpOptions = {
 export class ModeService {
 
   apiURL: string = 'http://localhost:8080/caisses/mode';
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService : AuthentifierService) {
   }
   listeModes(): Observable<any> {
-    return this.http.get<ModePaiement[]>(this.apiURL+"/listerModePaiements");
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.get<ModePaiement[]>(this.apiURL+"/listerModePaiements",{headers:httpHeaders}
+    );
+  
   }
 
   listerModePaiementParEtat(name): Observable<any> {
     const url = `${this.apiURL+"/listerModePaiementParEtat"}/${name}`;
-    return this.http.get<ModePaiement[]>(url);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.get<ModePaiement[]>(url,{headers:httpHeaders}
+    );
+
+
+  
   }
 
   ajouterMode(prod: ModePaiement): Observable<ModePaiement> {
-    return this.http.post<ModePaiement>(this.apiURL+"/ajouterModePaiement", prod, httpOptions);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.post<ModePaiement>(this.apiURL+"/ajouterModePaiement",prod,{headers:httpHeaders}
+    );
   }
 
   consulterMode(id: number): Observable<ModePaiement> {
-    const url = `${this.apiURL+"/consulterModePaiement"}/${id}`;
-    return this.http.get<ModePaiement>(url);
+    const url = `${this.apiURL}/consulterModePaiement/${id}`;
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
+    return this.http.get<ModePaiement>(url,{headers:httpHeaders});
+
   }
 
   updateMode(prod: ModePaiement): Observable<ModePaiement> {
-    return this.http.put<ModePaiement>(this.apiURL+"/modifierModePaiement", prod, httpOptions);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
+    return this.http.put<ModePaiement>(this.apiURL + '/modifierModePaiement', prod,{headers:httpHeaders});
+  
   }
 
   DesactiverMode(id: number) {
-    const url = `${this.apiURL+"/desactiverMode"}/${id}`;
-    return this.http.put(url, httpOptions);
+    const url = `${this.apiURL}/desactiverMode/${id}`;
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
+    return this.http.put(url,{headers:httpHeaders});
+
+ 
   }
 
   ActiverMode(id: number) {
-    const url = `${this.apiURL+"/activerMode"}/${id}`;
-    return this.http.put(url, httpOptions);
+    const url =`${this.apiURL+"/activerMode"}/${id}`;
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
+    return this.http.put(url,{headers:httpHeaders});
+
+ /*   const url = `${this.apiURL+"/activerMode"}/${id}`;
+    return this.http.put(url, httpOptions);*/
   }
 }

@@ -37,10 +37,12 @@ import { HistoriquePaiementComponent } from './Paiement/historique-paiement/hist
 import { AnnulerPaiementComponent } from './Paiement/annuler-paiement/annuler-paiement.component';
 import { ListerFactureComponent } from './Facture/lister-facture/lister-facture.component';
 import { SaisirAvanceComponent } from './Paiement/saisir-avance/saisir-avance.component';
+import { ConnectionComponent } from './connection/connection.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            {path: '', component: ConnectionComponent},
             {
                 path: '', component: AppMainComponent,
                 children: [
@@ -79,6 +81,7 @@ import { SaisirAvanceComponent } from './Paiement/saisir-avance/saisir-avance.co
                     {path: 'documentation', component: DocumentationComponent}
                 ],
             },
+            {path: 'connection', component: ConnectionComponent},
             {path:'pages/landing', component: LandingComponent},
             {path:'pages/login', component: LoginComponent},
             {path:'pages/error', component: ErrorComponent},

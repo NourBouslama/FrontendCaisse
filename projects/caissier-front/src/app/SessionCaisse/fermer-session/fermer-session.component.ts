@@ -125,9 +125,9 @@ for(var n=0;n<this.currentSession.caisse.modes.length;n++){
   });
 
 
-  this.router.navigate(['/session']).then(() => {
+  /*this.router.navigate(['/session']).then(() => {
     window.location.reload();
-    });
+    });*/
 
  }
 

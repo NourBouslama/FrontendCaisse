@@ -54,7 +54,7 @@ client =new Client();
 ajouter(){
 
 
-    this.newEncaissement.session.montantSession+=this.newEncaissement.montantE;
+    this.newEncaissement.session.montantSession=this.newEncaissement.montantE;
     this.newEncaissement.etat="avance"
     this.encaissementService
         .ajouterEncaissement(this.newEncaissement)

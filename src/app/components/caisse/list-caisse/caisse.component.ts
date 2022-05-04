@@ -27,9 +27,9 @@ export class CaisseComponent implements OnInit {
       this.caisseService.DesactiverCaisse(p.idC).subscribe(() => {
         console.log("caisse desactivé");
       });
-    this.router.navigate(['/Caisse']).then(() => {
+    /*this.router.navigate(['/Caisse']).then(() => {
       window.location.reload();
-    });
+    });*/
   }
 
   activerCaisse(p: Caisse) {

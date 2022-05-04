@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Caisse } from '../Model/Caisse';
 import { ModePaiement } from '../Model/ModePaiement';
+import { AuthentifierService } from './authentifier.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,43 +17,71 @@ export class CaisseService {
   
   modes : ModePaiement[];
   caisses : Caisse[];
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private authService : AuthentifierService) { }
 
   
   listeCaisses(): Observable<any> {
-    return this.http.get<Caisse[]>(this.apiURL+"/listerCaisses");
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+
+    return this.http.get<Caisse[]>(this.apiURL+"/listerCaisses",{headers:httpHeaders});
   }
 
   
   listerCaisseParEtat(name): Observable<any> {
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+
     const url = `${this.apiURL+"/listerCaisseParEtat"}/${name}`;
-    return this.http.get<Caisse[]>(url);
+    return this.http.get<Caisse[]>(url,{headers:httpHeaders});
   }
 
 
 
 
   ajouterCaisse(prod: Caisse): Observable<Caisse> {
-    return this.http.post<Caisse>(this.apiURL+"/ajouterCaisse", prod, httpOptions);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+
+    return this.http.post<Caisse>(this.apiURL+"/ajouterCaisse", prod,{headers:httpHeaders});
   }
 
   consulterCaisse(id: number): Observable<Caisse> {
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+
     const url = `${this.apiURL+"/consulterCaisse"}/${id}`;
-    return this.http.get<Caisse>(url);
+    return this.http.get<Caisse>(url,{headers:httpHeaders});
   }
 
   updateCaisse(prod: Caisse): Observable<Caisse> {
-    return this.http.put<Caisse>(this.apiURL+"/modifierCaisse", prod, httpOptions);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+
+    return this.http.put<Caisse>(this.apiURL+"/modifierCaisse", prod,{headers:httpHeaders});
   }
 
   DesactiverCaisse(id: number) {
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+
     const url = `${this.apiURL+"/desactiverCaisse"}/${id}`;
-    return this.http.put(url, httpOptions);
+    return this.http.put(url,{headers:httpHeaders});
   }
 
   ActiverCaisse(id: number) {
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+
     const url = `${this.apiURL+"/activerCaisse"}/${id}`;
-    return this.http.put(url, httpOptions);
+    return this.http.put(url,{headers:httpHeaders});
   }
 
 
