@@ -4,11 +4,14 @@ import { Client } from 'src/app/Model/Client';
 import { Encaissement } from 'src/app/Model/Encaissement';
 import { ModePaiement } from 'src/app/Model/ModePaiement';
 import { Paiement } from 'src/app/Model/Paiement';
+import { Utilisateur } from 'src/app/Model/Utilisateur';
+import { AuthentifierService } from 'src/app/service/authentifier.service';
 import { CaisseService } from 'src/app/service/caisse.service';
 import { ClientService } from 'src/app/service/client.service';
 import { EncaissementService } from 'src/app/service/encaissement.service';
 import { PaiementService } from 'src/app/service/paiement.service';
 import { SessionService } from 'src/app/service/session.service';
+import { UtilisateurService } from 'src/app/service/utilisateur.service';
 
 @Component({
   selector: 'app-saisir-avance',
@@ -24,7 +27,9 @@ export class SaisirAvanceComponent implements OnInit {
   newEncaissement = new Encaissement();
   referenceClient: number;
   montantsaisie:number;
-client =new Client();
+  client =new Client();
+  u=new Utilisateur();
+
   constructor(
     private clientService: ClientService,
     private sessionCaisseService: SessionService,
@@ -32,14 +37,19 @@ client =new Client();
     private paiementService: PaiementService,
     private encaissementService: EncaissementService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    public authService: AuthentifierService,
+    private utilisateurService:UtilisateurService) { }
 
   ngOnInit(): void {
       this.chercherSession();
   }
   chercherSession() {
+    this.utilisateurService.chercherParEmail(this.authService.loggedUser).
+    subscribe( agt =>{ this.u = agt;
+
     this.sessionCaisseService
-        .chercherByEtatEtCaissierId("en cours",this.idU)
+        .chercherByEtatEtCaissierId("en cours",this.u.idU)
         .subscribe((sess) => {
             console.log(sess);
             this.newEncaissement.session = sess;
@@ -48,6 +58,7 @@ client =new Client();
             //this.ajouterEncaissement();
 
         });
+      });
 }
 
 

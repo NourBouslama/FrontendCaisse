@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionCaisse } from 'src/app/Model/SessionCaisse';
+import { Utilisateur } from 'src/app/Model/Utilisateur';
+import { AuthentifierService } from 'src/app/service/authentifier.service';
 import { SessionService } from 'src/app/service/session.service';
+import { UtilisateurService } from 'src/app/service/utilisateur.service';
 
 @Component({
   selector: 'app-list-session',
@@ -13,14 +16,19 @@ export class ListSessionComponent implements OnInit {
   sessionCaisses: SessionCaisse[];
   res:SessionCaisse[];
   display: boolean = false;
+  u=new Utilisateur();
 
-  constructor(private sessionService: SessionService, private router: Router) { }
+  constructor(private sessionService: SessionService, private router: Router,public authService: AuthentifierService,private utilisateurService:UtilisateurService) { }
 
   ngOnInit(): void {
-    this.sessionService.listeSessionByCaissierId(1).subscribe(cai => {
+    
+    this.utilisateurService.chercherParEmail(this.authService.loggedUser).
+    subscribe( agt =>{ this.u = agt;
+    this.sessionService.listeSessionByCaissierId(this.u.idU).subscribe(cai => {
       console.log(cai);
       this.sessionCaisses = cai;
     });
+  });
   }
   fermerSession(p: SessionCaisse) {
     let conf = confirm("Etes-vous sûr ?");

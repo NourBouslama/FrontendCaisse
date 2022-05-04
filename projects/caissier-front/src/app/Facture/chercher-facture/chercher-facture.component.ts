@@ -4,11 +4,14 @@ import { Encaissement } from 'src/app/Model/Encaissement';
 import { Facture } from 'src/app/Model/Facture';
 import { ModePaiement } from 'src/app/Model/ModePaiement';
 import { Paiement } from 'src/app/Model/Paiement';
+import { Utilisateur } from 'src/app/Model/Utilisateur';
+import { AuthentifierService } from 'src/app/service/authentifier.service';
 import { CaisseService } from 'src/app/service/caisse.service';
 import { EncaissementService } from 'src/app/service/encaissement.service';
 import { FactureService } from 'src/app/service/facture.service';
 import { PaiementService } from 'src/app/service/paiement.service';
 import { SessionService } from 'src/app/service/session.service';
+import { UtilisateurService } from 'src/app/service/utilisateur.service';
 
 @Component({
   selector: 'app-chercher-facture',
@@ -45,6 +48,7 @@ export class ChercherFactureComponent implements OnInit {
    //la valeur de référence sélectionné
    reference: number;
    newPaiement = new Paiement();
+   u=new Utilisateur();
 
    constructor(
        private factureService: FactureService,
@@ -53,7 +57,9 @@ export class ChercherFactureComponent implements OnInit {
        private paiementService: PaiementService,
        private encaissementService: EncaissementService,
        private activatedRoute: ActivatedRoute,
-       private router: Router
+       private router: Router,
+       public authService: AuthentifierService,
+       private utilisateurService:UtilisateurService
    ) {
        this.ListeReference = [
            { label: 'Référence Facture', value: 1, isSelected: false },
@@ -91,8 +97,12 @@ export class ChercherFactureComponent implements OnInit {
    }
 
    chercherSession() {
+    this.utilisateurService.chercherParEmail(this.authService.loggedUser).
+    subscribe( agt =>{ this.u = agt;
+
+
        this.sessionCaisseService
-           .chercherByEtatEtCaissierId("en cours",1)
+           .chercherByEtatEtCaissierId("en cours",this.u.idU)
            .subscribe((sess) => {
                console.log(sess);
               this.newEncaissement.session = sess;
@@ -100,6 +110,8 @@ export class ChercherFactureComponent implements OnInit {
                console.log(this.Listemodes);
                console.log('le mode choisi : ', this.newPaiement.modePaiement);
            });
+
+        });
    }
 
 
@@ -150,7 +162,7 @@ export class ChercherFactureComponent implements OnInit {
        this.paiementService
            .PayerFacture(this.factlist)
            .subscribe((agt) => {
-               console.log('payement effectuée',agt);
+               console.log('paiement effectuée',agt);
            });
        this.router.navigate(['/historiquePaiement']);
    }

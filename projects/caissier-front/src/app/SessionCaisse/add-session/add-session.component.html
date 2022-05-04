@@ -41,7 +41,9 @@
                 </ng-template>
             </p-dropdown>
         <br>
-            <h5 >Sélectionner le nom de caissier</h5>
+        <!--
+
+       <h5 >Sélectionner le nom de caissier</h5>
             <p-dropdown [options]="caissiers" [(ngModel)]="newSession.caissier" optionLabel="nom" [showClear]="true" placeholder="Nom caissier">
              
                 <ng-template let-caissier pTemplate="item">
@@ -51,6 +53,8 @@
                 </ng-template>
             </p-dropdown>
        <br>
+        -->
+     
             <h5>Montant de caisse</h5>
             <span class="p-float-label">
                 <input pInputText id="username" type="number" [(ngModel)]="newSession.montantInit" />

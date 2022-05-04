@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Paiement } from 'src/app/Model/Paiement';
+import { Utilisateur } from 'src/app/Model/Utilisateur';
+import { AuthentifierService } from 'src/app/service/authentifier.service';
 import { PaiementService } from 'src/app/service/paiement.service';
 import { SessionService } from 'src/app/service/session.service';
+import { UtilisateurService } from 'src/app/service/utilisateur.service';
 
 @Component({
   selector: 'app-historique-paiement',
@@ -13,14 +16,19 @@ export class HistoriquePaiementComponent implements OnInit {
   
   paiements :Paiement[];
   idU:number=1;
+  u=new Utilisateur();
 
-  constructor(  private paiementService: PaiementService,private sessionCaisseService: SessionService) { }
+  constructor(  private paiementService: PaiementService,private sessionCaisseService: SessionService,public authService: AuthentifierService,private utilisateurService:UtilisateurService) { }
 
   ngOnInit(): void {
-      this.sessionCaisseService.chercherByEtatEtCaissierId("en cours",1).subscribe(session => {
+    this.utilisateurService.chercherParEmail(this.authService.loggedUser).
+    subscribe( agt =>{ this.u = agt;
+
+      this.sessionCaisseService.chercherByEtatEtCaissierId("en cours",this.u.idU).subscribe(session => {
           console.log(session.numS);
           this.listerPaiements(session.numS);
                       });
+     });
   }
 
   listerPaiements(nums: number)

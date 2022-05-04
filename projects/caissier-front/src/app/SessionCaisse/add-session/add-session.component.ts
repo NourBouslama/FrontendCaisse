@@ -3,9 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Caisse } from 'src/app/Model/Caisse';
 import { Caissier } from 'src/app/Model/Caissier';
 import { SessionCaisse } from 'src/app/Model/SessionCaisse';
+import { Utilisateur } from 'src/app/Model/Utilisateur';
+import { AuthentifierService } from 'src/app/service/authentifier.service';
 import { CaisseService } from 'src/app/service/caisse.service';
 import { CaissierService } from 'src/app/service/caissier.service';
 import { SessionService } from 'src/app/service/session.service';
+import { UtilisateurService } from 'src/app/service/utilisateur.service';
 
 @Component({
   selector: 'app-add-session',
@@ -22,8 +25,9 @@ export class AddSessionComponent implements OnInit {
   newSession= new SessionCaisse();
   display: boolean = false;
   display2: boolean = false;
+  u=new Utilisateur();
 
-  constructor(private activatedRoute: ActivatedRoute, private sessionService: SessionService, private caisseService: CaisseService, private caissierService: CaissierService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private sessionService: SessionService, private caisseService: CaisseService, private caissierService: CaissierService, private router: Router,public authService: AuthentifierService,private utilisateurService:UtilisateurService) { }
 
   ngOnInit(): void {
     this.onSelectCaisse();
@@ -48,10 +52,13 @@ export class AddSessionComponent implements OnInit {
     });
   } 
     addSession(){
-      this.sessionService.chercherByEtatEtCaissier("en cours",this.newSession.caissier.idU).subscribe(enc => {
+      this.utilisateurService.chercherParEmail(this.authService.loggedUser).
+      subscribe( agt =>{ this.u = agt;
+
+      this.sessionService.chercherByEtatEtCaissier("en cours",this.u.idU).subscribe(enc => {
         this.res2 = enc; 
      
-    this.sessionService.chercherByCaisseNumC("en cours",this.newSession.caisse.numC).subscribe(enc => {
+     this.sessionService.chercherByCaisseNumC("en cours",this.newSession.caisse.numC).subscribe(enc => {
       this.res = enc; 
 
 
@@ -62,7 +69,9 @@ export class AddSessionComponent implements OnInit {
       this.display = true;
      }
      else{
+     
       this.newSession.montantSession=this.newSession.montantInit;
+      this.newSession.caissier=this.u;
        this.sessionService.ajouterSession(this.newSession)
        .subscribe(sess => {
        console.log(sess);
@@ -70,8 +79,15 @@ export class AddSessionComponent implements OnInit {
        this.router.navigate(['/session']).then(() => {
         window.location.reload();
       });
+  
+
+
+
+
      }
     });
+
+   });
   });
   }
   clickAlert(){

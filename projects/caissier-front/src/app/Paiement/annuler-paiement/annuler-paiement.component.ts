@@ -20,7 +20,7 @@ export class AnnulerPaiementComponent implements OnInit {
     //valeur pr contenir la liste des factures sélectionnées
     factlist:Facture[]=[];
 
-  isselected:boolean;
+    isselected:boolean;
 
   //la valeur de référence sélectionné
     reference:number;
