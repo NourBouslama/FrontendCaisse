@@ -50,12 +50,12 @@ logout() {
   localStorage.removeItem('jwt'); 
   this.router.navigate(['/connection']);
        } 
-       decodeJWT() { 
-        if (this.token == undefined)
-        return; 
-        const decodedToken = this.helper.decodeToken(this.token); 
-        this.role = decodedToken.role; 
-        //console.log("roles "+this.roles)
-        this.loggedUser = decodedToken.sub; 
-      }
+  decodeJWT() { 
+  if (this.token == undefined)
+  return; 
+  const decodedToken = this.helper.decodeToken(this.token); 
+   this.role = decodedToken.role; 
+   //console.log("roles "+this.roles)
+    this.loggedUser = decodedToken.sub; 
+          }
 }

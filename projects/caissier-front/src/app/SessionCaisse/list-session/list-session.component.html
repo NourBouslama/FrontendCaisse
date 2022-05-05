@@ -24,7 +24,10 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Numéro caisse</th>
-                        <th>Nom caissier</th>
+                        <!--
+             <th>Nom caissier</th>
+                        -->
+           
                         <th>Date ouverture</th>
                         <th>Date fermeture</th>
                         <th>Etat</th>
@@ -34,7 +37,10 @@
                 <ng-template pTemplate="body" let-session>
                     <tr>
                         <td>{{session.caisse.numC}}</td>
-                        <td>{{session.caissier.nom}}</td>
+                        <!--
+      <td>{{session.caissier.nom}}</td>
+                        -->
+                  
                         <td>{{session.dateOuverture | date:'dd/MM/YYYY  HH:mm'}}</td>
                         <td>{{session.datefermeture | date:'dd/MM/YYYY  HH:mm'}}</td>
                         <td>{{session.etat}}</td>

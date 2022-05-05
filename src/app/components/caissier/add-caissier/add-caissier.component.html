@@ -33,8 +33,13 @@
 				<input pInputText id="adresse" type="text"  [(ngModel)]="newCaissier.adresse" />
 
 			</span>
+			<h5>Mot de passe :</h5>
+		
+			<p-password [(ngModel)]="newCaissier.motDePasse" [toggleMask]="true" promptLabel="entrer le mot de passe"  [feedback]="false"></p-password>
 
-<br><br>
+
+
+<br>
 <br>
 <br>
             <button pButton pRipple type="button" label="Ajouter" type="submit"  (click)="ajouterCaissier()" class="btn btn-success"></button>
