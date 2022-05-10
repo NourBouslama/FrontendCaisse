@@ -15,19 +15,21 @@ export class CaissierService {
   constructor(private http: HttpClient, private authService : AuthentifierService) {
   }
   listeCaissiers(): Observable<Caissier[]> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.get<Caissier[]>(this.apiURL+"/listerCaissiers",{headers:httpHeaders}
+    
+    return this.http.get<Caissier[]>(this.apiURL+"/listerCaissiers"
     );
   
 
   }
+  listeCaissiersByEtat(name): Observable<any> {
+    
+
+    const url = `${this.apiURL+"/listerCaissierByEtat"}/${name}`;
+    return this.http.get<Caissier[]>(url);
+  }
   ajouterCaissier(caissier: Caissier): Observable<Caissier> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post<Caissier>(this.apiURL+"/ajouterCaissier",caissier,{headers:httpHeaders}
+    
+    return this.http.post<Caissier>(this.apiURL+"/ajouterCaissier",caissier
     );
 
   }
@@ -35,37 +37,29 @@ export class CaissierService {
 
   desactiverCaissier(id: number):Observable<Caissier> {
     const url = `${this.apiURL}/desactiverCaissier/${id}`;
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.put<Caissier>(url,{headers:httpHeaders});
+     
+    return this.http.put<Caissier>(url,null);
 
   }
   activerCaissier(id: number) {
     const url = `${this.apiURL}/activerCaissier/${id}`;
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.put(url,{headers:httpHeaders});
+     
+    return this.http.put(url,null);
 
    
   }
 
   consulterCaissier(matricule: number): Observable<Caissier> {
     const url = `${this.apiURL}/consulterCaissier/${matricule}`;
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.get<Caissier>(url,{headers:httpHeaders});
+     
+    return this.http.get<Caissier>(url);
 
 
   }
 
   updateCaissier(caissier: Caissier): Observable<Caissier> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.put<Caissier>(this.apiURL + '/modifierCaissier', caissier,{headers:httpHeaders});
+     
+    return this.http.put<Caissier>(this.apiURL + '/modifierCaissier', caissier);
 
   }
 }

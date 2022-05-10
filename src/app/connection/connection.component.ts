@@ -29,29 +29,26 @@ export class ConnectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onLoggedin()
+  Connection()
 {
-    this.authentifierService.login(this.utilisateur).subscribe((data)=> {
+    this.authentifierService.connection(this.utilisateur).subscribe((data)=> {
     let jwToken = data.headers.get('Authorization');
     this.authentifierService.saveToken(jwToken);
     this.utilisateurService.chercherParEmail(this.utilisateur.email).
     subscribe( agt =>{ this.u = agt;
-      (err)=>{ this.err = 0;}
+      
     if(this.u.role.role=="admin"){
-      (err)=>{ this.err = 0;}
       this.router.navigate(['/acceuil']);
       console.log("in if",this.u.role.role);
     }
-  
-  else{
-  
-    (err)=>{ this.err = 1;}
-   
-      this.display = true;
-      this.router.navigate(['/connection']);
-    
+    else if(this.u.role.role=="caissier"){
 
-    console.log("in else",this.u.role.role);
+      this.router.navigate(['/session']);
+      console.log("in if",this.u.role.role);
+    }
+  else{
+      this.router.navigate(['/connection']);
+      console.log("in else",this.u.role.role);
   }
   console.log(this.u.role);
 

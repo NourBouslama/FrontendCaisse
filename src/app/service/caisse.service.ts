@@ -19,62 +19,48 @@ caisses : Caisse[];
 
   
   listeCaisses(): Observable<any> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.get<Caisse[]>(this.apiURL+"/listerCaisses",{headers:httpHeaders}
+  
+    return this.http.get<Caisse[]>(this.apiURL+"/listerCaisses"
     );
 
   }
 
+   
+  listerCaisseParEtat(name): Observable<any> {
+
+
+    const url = `${this.apiURL+"/listerCaisseParEtat"}/${name}`;
+    return this.http.get<Caisse[]>(url);
+  }
+
   ajouterCaisse(prod: Caisse): Observable<Caisse> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post<Caisse>(this.apiURL+"/ajouterCaisse",prod,{headers:httpHeaders}
+ 
+    return this.http.post<Caisse>(this.apiURL+"/ajouterCaisse",prod
     );
   
   }
 
   consulterCaisse(id: number): Observable<Caisse> {
     const url = `${this.apiURL}/consulterCaisse/${id}`;
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.get<Caisse>(url,{headers:httpHeaders});
+ 
+    return this.http.get<Caisse>(url);
   }
 
   updateCaisse(prod: Caisse): Observable<Caisse> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.put<Caisse>(this.apiURL + '/modifierCaisse', prod,{headers:httpHeaders});
+   
+    return this.http.put<Caisse>(this.apiURL + '/modifierCaisse', prod);
   }
 
   DesactiverCaisse(id: number) {
     const url = `${this.apiURL+"/desactiverCaisse"}/${id}`;
-    let jwt = this.authService.getToken();
-    //jwt = "Bearer "+jwt;
-   // let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-   const httpOptions = {
-    headers: new HttpHeaders({
-     'Content-Type': 'application/json',
-     'Authorization': 'Bearer jwt'
-    }),
-   withCredentials: true
-  };
-   const  httpHeaders = {
-      headers:new HttpHeaders({"Content-Type": "application/json","Authorization":jwt}), 
-      withCredentials: true
-    };
-    return this.http.put(url,httpOptions);
-   /* const url = `${this.apiURL+"/desactiverCaisse"}/${id}`;
-    return this.http.put(url,httpOptions);*/
+   
+    return this.http.put(url,null);
+
   }
 
   ActiverCaisse(id: number) {
     const url = `${this.apiURL+"/activerCaisse"}/${id}`;
-    return this.http.put(url,httpOptions);
+    return this.http.put(url,null);
   }
 
  

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -158,6 +158,17 @@ import { ConsulterCaissierComponent } from './components/caissier/consulter-cais
 import { ConsulterCaisseComponent } from './components/caisse/consulter-caisse/consulter-caisse.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { ConnectionComponent } from './connection/connection.component';
+import { ListSessionComponent } from './SessionCaisse/list-session/list-session.component';
+import { AddSessionComponent } from './SessionCaisse/add-session/add-session.component';
+import { FermerSessionComponent } from './SessionCaisse/fermer-session/fermer-session.component';
+import { ConsulterSessionComponent } from './SessionCaisse/consulter-session/consulter-session.component';
+import { ChercherFactureComponent } from './Facture/chercher-facture/chercher-facture.component';
+import { ListerFactureComponent } from './Facture/lister-facture/lister-facture.component';
+import { AnnulerPaiementComponent } from 'src/Paiement/annuler-paiement/annuler-paiement.component';
+import { SaisirAvanceComponent } from 'src/Paiement/saisir-avance/saisir-avance.component';
+import { HistoriquePaiementComponent } from 'src/Paiement/historique-paiement/historique-paiement.component';
+import { JwtInterceptorService } from './service/jwt-interceptor.service';
+import { AuthentifierService } from './service/authentifier.service';
 
 
 
@@ -312,11 +323,25 @@ import { ConnectionComponent } from './connection/connection.component';
         ConsulterCaisseComponent,
         AcceuilComponent,
         ConnectionComponent,
+        ListSessionComponent,
+        AddSessionComponent,
+        ConsulterSessionComponent,
+        FermerSessionComponent,
+        ChercherFactureComponent,
+        ListerFactureComponent,
+        AnnulerPaiementComponent,
+        HistoriquePaiementComponent,
+        SaisirAvanceComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
+       {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptorService,
+            multi: true
+          },
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, ConfigService
+        PhotoService, ProductService, MenuService, ConfigService,AuthentifierService
     ],
     bootstrap: [AppComponent]
 })

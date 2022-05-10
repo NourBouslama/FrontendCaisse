@@ -25,7 +25,7 @@ export class ModeComponent implements OnInit {
 
     modes: ModePaiement[];
     mode : ModePaiement;
-    constructor(private modeService: ModeService, private router: Router) {}
+    constructor(private modeService: ModeService, private router: Router,private messageService: MessageService) {}
 
     ngOnInit() {
         this.modeService.listeModes().subscribe(livs => {
@@ -36,22 +36,24 @@ export class ModeComponent implements OnInit {
 }
 
 desactiverMode(p: ModePaiement) {
-    let conf = confirm("Etes-vous sûr ?");
-    if (conf)
+
       this.modeService.DesactiverMode(p.code).subscribe(() => {
         console.log("mode desactivé");
       });
+      this.messageService.add({key: 'myKey1',severity:'info', summary: 'Information', detail: 'Mode Paiement desactiver'});
+
     this.router.navigate(['/ModePaiement']).then(() => {
       window.location.reload();
     });
   }
 
   activerMode(p: ModePaiement) {
-    let conf = confirm("Etes-vous sûr ?");
-    if (conf)
+  
       this.modeService.ActiverMode(p.code).subscribe(() => {
         console.log("mode activé");
       });
+      this.messageService.add({key: 'myKey1',severity:'info', summary: 'Information', detail: 'Mode Paiement activer'});
+
     this.router.navigate(['/ModePaiement']).then(() => {
       window.location.reload();
     });

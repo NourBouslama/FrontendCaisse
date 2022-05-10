@@ -1,6 +1,8 @@
 <div class="col-12">
   <div class="card">
     <h5>Agent de coupure</h5>
+    <p-toast position="top-right" key="myKey1"></p-toast>
+
 
     <p-dialog   position="top" header="Title" [(visible)]="display"  [style]="{height:'14vw',width: '30vw'}">
       <ng-template pTemplate="header">
@@ -58,6 +60,7 @@
         
 
           <td>
+
             <div *ngIf="agt.etat== 'activé'">
               <button pButton pRipple type="button" label="Désactiver"
                 class=" p-button-rounded p-button-secondary mr-2 mb-2" 
