@@ -4,7 +4,7 @@ import { Caisse } from 'src/app/Model/Caisse';
 import { Caissier } from 'src/app/Model/Caissier';
 import { SessionCaisse } from 'src/app/Model/SessionCaisse';
 import { Utilisateur } from 'src/app/Model/Utilisateur';
-import { AuthentifierService } from 'src/app/service/authentifier.service';
+import { AuthentifierService } from 'src/app/service/connection.service';
 import { CaisseService } from 'src/app/service/caisse.service';
 import { CaissierService } from 'src/app/service/caissier.service';
 import { SessionService } from 'src/app/service/session.service';

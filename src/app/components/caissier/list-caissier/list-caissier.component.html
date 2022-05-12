@@ -5,17 +5,17 @@
             <ng-template pTemplate="header">
                 <tr>
 
-                    <th colspan="6">
+                    <th colspan="5">
                        <h3 class="mb-0">Liste des Caissiers</h3>
                     </th>
                     <p-toast position="top-right" key="myKey1"></p-toast>
-                <td><button pButton pRipple label="Nouvelle caissier" type="button" icon="pi pi-user-plus"
+                <td><button pButton pRipple label="Nouveau caissier" type="button" icon="pi pi-user-plus"
                     class="p-button-rounded p-button-primary" routerLink="/add-caissier"></button></td>
               </tr>
                 <tr>
                         <th scope="col">Matricule</th>
+                        <th scope="col">Prénom</th>
                         <th scope="col">Nom</th>
-                        <th scope="col">Prenom</th>
                         <th scope="col">Etat</th>
                         <th></th>
                         <th></th>
@@ -28,10 +28,10 @@
                       {{cais.matricule}}
                     </td>
                     <td>
-                     {{cais.nom}}
+                     {{cais.prenom}}
                    </td>
                    <td>
-                     {{cais.prenom}}
+                     {{cais.nom}}
                    </td>
                    <td>
                      {{cais.etat}}
@@ -49,6 +49,11 @@
 
                      </tr>
             </ng-template>
+            <ng-template pTemplate="summary">
+              <div class="flex align-items-center justify-content-between">
+                 Totalement il y a {{caissiers ? caissiers.length : 0 }} caissiers.
+              </div>
+          </ng-template>
         </p-table>
     </div>
 </div>

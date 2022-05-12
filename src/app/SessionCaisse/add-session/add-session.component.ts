@@ -4,7 +4,7 @@ import { Caisse } from 'src/app/Model/Caisse';
 import { Caissier } from 'src/app/Model/Caissier';
 import { SessionCaisse } from 'src/app/Model/SessionCaisse';
 import { Utilisateur } from 'src/app/Model/Utilisateur';
-import { AuthentifierService } from 'src/app/service/authentifier.service';
+import { AuthentifierService } from 'src/app/service/connection.service';
 import { CaisseService } from 'src/app/service/caisse.service';
 import { CaissierService } from 'src/app/service/caissier.service';
 import { SessionService } from 'src/app/service/session.service';
@@ -25,6 +25,7 @@ export class AddSessionComponent implements OnInit {
   newSession= new SessionCaisse();
   display: boolean = false;
   display2: boolean = false;
+  display3: boolean = false;
   u=new Utilisateur();
   nb:any=0;
 
@@ -62,8 +63,8 @@ export class AddSessionComponent implements OnInit {
      this.sessionService.chercherByCaisseNumC("en cours",this.newSession.caisse.numC).subscribe(enc => {
       this.res = enc; 
 
-     /* this.sessionService.ChercherSessionParEtatJournal("fermer",this.u.idU).subscribe(enc => {
-        this.nb = enc; */
+      this.sessionService.ChercherSessionParEtatJournal("fermer",this.u.idU).subscribe(enc => {
+        this.nb = enc; 
       if(this.res2.length > 0){
           this.display2 = true;
       }
@@ -72,8 +73,8 @@ export class AddSessionComponent implements OnInit {
         this.display = true;
      }
      
-     else if(this.nb.length  > 0){
-      this.display = true;
+     else if(this.nb.length==1){
+      this.display3 = true;
      }
      else{
      
@@ -96,11 +97,12 @@ export class AddSessionComponent implements OnInit {
 
    });
   });
-//});
+});
   }
   clickAlert(){
     this.display = false;
     this.display2 = false;
+    this.display3 = false;
   
   }
   

@@ -35,13 +35,14 @@
 			</span>
             <h5>Secteur :</h5>
 			<span class="p-float-label">
-				<input pInputText id="secteur" type="text" [(ngModel)]="newAgent.secteur" />
+				<input pInputText id="secteur" type="text" [(ngModel)]="newAgent.secteur" required/>
+				
 
 			</span>
 <br><br>
 <br>
 <br>
-            <button pButton pRipple type="button" label="Ajouter" type="submit"  (click)="ajouterAgent()" class="btn btn-success"></button>
+            <button pButton pRipple type="button" label="Ajouter" type="submit"  (click)="ajouterAgent()" icon="pi pi-plus" class="p-button-rounded p-button-primary" [style]="{'width': '40%'}"></button>
 		</div>
 
 

@@ -36,12 +36,13 @@
             <h5>Secteur :</h5>
 			<span class="p-float-label">
 				<input pInputText id="secteur" type="text" [(ngModel)]="currentAgent.secteur" />
+				<small *ngIf="currentAgent.secteur==''" id="secteur-help" class="p-error block">remplir le secteur</small>
 
 			</span>
 <br><br>
 <br>
 <br>
-            <button pButton pRipple type="button" label="Modifier" type="submit"  (click)="modifierAgent()" class="btn btn-success"></button>
+            <button pButton pRipple type="button" label="Modifier" type="submit"  [style]="{'width': '40%'}"   icon="pi pi-pencil" (click)="modifierAgent()" class="p-button-rounded p-button-warning"></button>
 		</div>
 
 

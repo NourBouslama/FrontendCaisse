@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppMainComponent } from './app.main.component';
-import { AuthentifierService } from './service/authentifier.service';
+import { AuthentifierService } from './service/connection.service';
 
 @Component({
     selector: 'app-menu',

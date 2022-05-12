@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Client } from '../Model/Client';
-import { AuthentifierService } from './authentifier.service';
+import { AuthentifierService } from './connection.service';
 
 
 

@@ -14,9 +14,12 @@
 			<span class="p-float-label">
 				<input pInputText id="username" type="text" [(ngModel)]="currentMode.libelle" />
 			</span> 
-<br><br>
+<br><br><br>
+
             <span>
-                <td><button pButton pRipple label="update" type="submit"  (click)="updateMode()"  icon="pi pi-pencil" class="p-button-rounded p-button-primary" ></button></td>
+              
+                    <button pButton pRipple label="modifier" type="submit"  [style]="{'width': '40%'}" (click)="updateMode()"  icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
+                
              
             </span>
 		</div>

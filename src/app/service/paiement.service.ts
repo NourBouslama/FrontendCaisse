@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Facture } from '../Model/Facture';
 import { Paiement } from '../Model/Paiement';
-import { AuthentifierService } from './authentifier.service';
+import { AuthentifierService } from './connection.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

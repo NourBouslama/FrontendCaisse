@@ -36,9 +36,9 @@
      {{selectedModes | json}}
             -->
             <span>
-                <td><button pButton pRipple label="ajouter" type="submit" icon="pi pi-plus"
-                        class="p-button-rounded p-button-primary" routerLink="/Caisse" (click)="addCaisse()"></button>
-                </td>
+               <button pButton pRipple label="Ajouter" type="submit" icon="pi pi-plus"
+               [style]="{'width': '40%'}" class="p-button-rounded p-button-primary" routerLink="/Caisse" (click)="addCaisse()"></button>
+             
             </span>
         </div>
     </div>

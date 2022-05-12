@@ -34,8 +34,8 @@
         </tr>
         <tr>
           <th scope="col">Matricule</th>
-          <th scope="col">Nom</th>
           <th scope="col">Prenom</th>
+          <th scope="col">Nom</th>
           <th scope="col">Etat</th>
       
           <th></th>
@@ -49,10 +49,10 @@
             {{agt.matricule}}
           </td>
           <td>
-            {{agt.nom}}
+            {{agt.prenom}}
           </td>
           <td>
-            {{agt.prenom}}
+            {{agt.nom}}
           </td>
           <td>
             {{agt.etat}}
@@ -83,6 +83,11 @@
           </td>
         </tr>
       </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+           Totalement il y a {{agents ? agents.length : 0 }} agents.
+        </div>
+    </ng-template>
     </p-table>
   </div>
 </div>

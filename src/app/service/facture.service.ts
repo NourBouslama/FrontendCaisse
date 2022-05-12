@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Facture } from '../Model/Facture';
-import { AuthentifierService } from './authentifier.service';
+import { AuthentifierService } from './connection.service';
 
 
 const httpOptions = {

@@ -3,7 +3,7 @@ import { AppMainComponent } from './app.main.component';
 import { Subscription } from 'rxjs';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
-import { AuthentifierService } from './service/authentifier.service';
+import { AuthentifierService } from './service/connection.service';
 
 @Component({
     selector: 'app-topbar',
@@ -28,7 +28,7 @@ export class AppTopBarComponent {
                 },*/
 
                 {
-                    label:'logout',
+                    label:'Deconnection',
                     icon:'pi pi-sign-out',
                     command: (event) => {
                        this.onLogout();

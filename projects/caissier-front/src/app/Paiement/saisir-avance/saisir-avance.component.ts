@@ -5,7 +5,7 @@ import { Encaissement } from 'src/app/Model/Encaissement';
 import { ModePaiement } from 'src/app/Model/ModePaiement';
 import { Paiement } from 'src/app/Model/Paiement';
 import { Utilisateur } from 'src/app/Model/Utilisateur';
-import { AuthentifierService } from 'src/app/service/authentifier.service';
+import { AuthentifierService } from 'src/app/service/connection.service';
 import { CaisseService } from 'src/app/service/caisse.service';
 import { ClientService } from 'src/app/service/client.service';
 import { EncaissementService } from 'src/app/service/encaissement.service';

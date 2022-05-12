@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Paiement } from 'src/app/Model/Paiement';
 import { Utilisateur } from 'src/app/Model/Utilisateur';
-import { AuthentifierService } from 'src/app/service/authentifier.service';
+import { AuthentifierService } from 'src/app/service/connection.service';
 import { PaiementService } from 'src/app/service/paiement.service';
 import { SessionService } from 'src/app/service/session.service';
 import { UtilisateurService } from 'src/app/service/utilisateur.service';

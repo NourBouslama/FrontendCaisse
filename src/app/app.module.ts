@@ -168,7 +168,7 @@ import { AnnulerPaiementComponent } from 'src/Paiement/annuler-paiement/annuler-
 import { SaisirAvanceComponent } from 'src/Paiement/saisir-avance/saisir-avance.component';
 import { HistoriquePaiementComponent } from 'src/Paiement/historique-paiement/historique-paiement.component';
 import { JwtInterceptorService } from './service/jwt-interceptor.service';
-import { AuthentifierService } from './service/authentifier.service';
+import { AuthentifierService } from './service/connection.service';
 
 
 
