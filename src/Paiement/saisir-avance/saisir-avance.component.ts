@@ -23,13 +23,12 @@ export class SaisirAvanceComponent implements OnInit {
   newPaiement = new Paiement();
   //la liste des modes cherchée
   Listemodes: ModePaiement[];
-  idU: number = 1;
+
   newEncaissement = new Encaissement();
   referenceClient: number;
   montantsaisie:number;
-  client =new Client();
-  u=new Utilisateur();
-
+client =new Client();
+u=new Utilisateur();
   constructor(
     private clientService: ClientService,
     private sessionCaisseService: SessionService,
@@ -38,8 +37,8 @@ export class SaisirAvanceComponent implements OnInit {
     private encaissementService: EncaissementService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    public authService: AuthentifierService,
-    private utilisateurService:UtilisateurService) { }
+    private utilisateurService:UtilisateurService,
+    public authService: AuthentifierService,) { }
 
   ngOnInit(): void {
       this.chercherSession();
@@ -47,7 +46,6 @@ export class SaisirAvanceComponent implements OnInit {
   chercherSession() {
     this.utilisateurService.chercherParEmail(this.authService.loggedUser).
     subscribe( agt =>{ this.u = agt;
-
     this.sessionCaisseService
         .chercherByEtatEtCaissierId("en cours",this.u.idU)
         .subscribe((sess) => {
@@ -63,46 +61,47 @@ export class SaisirAvanceComponent implements OnInit {
 
 
 ajouter(){
+    
+    this.newEncaissement.session.montantSession+=this.newEncaissement.montantE;
+    this.sessionCaisseService
+    .modifierSession(this.newEncaissement.session)
+    .subscribe((sess) => {
 
-
-    this.newEncaissement.session.montantSession=this.newEncaissement.montantE;
+    });
     this.newEncaissement.etat="avance"
-    this.encaissementService
+   this.encaissementService
         .ajouterEncaissement(this.newEncaissement)
         .subscribe((encai) => {
 
             this.ajouterPaiement(encai);
             console.log('encaissement effectuée : ',encai);
         });
+
+        this.router.navigate(['/historiquePaiement']).then(() => {
+          window.location.reload();
+        });
 }
 
 ajouterPaiement(encaissement: Encaissement) {
 
+  this.clientService.chercherCaisse(this.referenceClient).subscribe(
+    (cli)=>{  this.newPaiement.cli=cli;
     this.newPaiement.encaissement = encaissement;
-    this.newPaiement.etat = "avance";
-    this.clientService.chercherCaisse(this.referenceClient).subscribe(
-      (cli)=>{  this.newPaiement.cli=cli;
-   
-
     //this.newPaiement.cli=this.client;
     console.log( this.newPaiement);
     this.paiementService
-        .ajouterPaiement(this.newPaiement)
+        .saisirAvance(this.newPaiement)
         .subscribe((paiement) => {
             console.log('le paiement ajouté', paiement);
           //  this.payerFactures(paiement.idP);
         });
-      }
-      )
-      this.router.navigate(['/historiquePaiement']).then(() => {
-        window.location.reload();
-        });
+      })
 }
-/*chercherClient(){
+chercherClient(){
     this.clientService.chercherCaisse(this.referenceClient).subscribe(
         (cli)=>{  this.newPaiement.cli=cli;
         }
     )
-}*/
+}
 
 }

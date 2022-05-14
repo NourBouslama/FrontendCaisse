@@ -27,7 +27,7 @@ export class AddSessionComponent implements OnInit {
   display2: boolean = false;
   display3: boolean = false;
   u=new Utilisateur();
-  nb:any=0;
+  nb:any;
 
   constructor(private activatedRoute: ActivatedRoute, private sessionService: SessionService, private caisseService: CaisseService, private caissierService: CaissierService, private router: Router,public authService: AuthentifierService,private utilisateurService:UtilisateurService) { }
 
@@ -73,7 +73,7 @@ export class AddSessionComponent implements OnInit {
         this.display = true;
      }
      
-     else if(this.nb.length==1){
+     else if(this.nb==1){
       this.display3 = true;
      }
      else{

@@ -95,7 +95,7 @@ export class SessionService {
 
   }
   ChercherSessionParEtatJournal(etat:string,id: number):any {
-    const url = `${this.apiURL+"/ChercherSessionParEtatJournal"}/${id}/${etat}`;
+    const url = `${this.apiURL+"/ChercherSessionParEtatJournal"}/${etat}/${id}`;
     return this.http.get(url);
 
   }

@@ -37,7 +37,7 @@
                 </h5>
             </div>
         </div>
-        <p-table [value]="c.modes">
+        <p-table [value]="c.modes" (change)="valueInput()">
             <ng-template  pTemplate="header">
                 <tr>
                       <th>Mode Paiement</th>
@@ -45,12 +45,12 @@
                       <th>Montant </th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body"  let-session>
+            <ng-template pTemplate="body"  let-mode>
 
                 <tr>
-                    <td>{{session.libelle}}</td>
-                    <td><input  pInputText id="nombre" type="number"   [style]="{'width': '20%'}" /></td>
-                    <td><input  pInputText id="montantMode" type="number"  (change)="valueInput()" [(ngModel)]="resmode" [style]="{'width': '30%'}" /></td>
+                    <td *ngIf="mode.libelle!='éspece'">{{mode.libelle}}</td>
+                    <td *ngIf="mode.libelle!='éspece'"><input  pInputText id="nombre" type="number"   [style]="{'width': '20%'}" /></td>
+                    <td *ngIf="mode.libelle!='éspece'"><input  pInputText id="montantMode" type="number"   [(ngModel)]="mode.val" [style]="{'width': '30%'}" /></td>
                
                 </tr>
             </ng-template>

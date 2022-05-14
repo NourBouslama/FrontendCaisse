@@ -18,10 +18,8 @@ export class UtilisateurService {
 
   chercherParEmail(email: String): Observable<Utilisateur> {
     const url = `${this.apiURL}/chercherParEmail/${email}`;
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.get<Utilisateur>(url,{headers:httpHeaders});
+  
+    return this.http.get<Utilisateur>(url);
 
 
   }

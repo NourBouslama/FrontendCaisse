@@ -164,7 +164,9 @@ export class ChercherFactureComponent implements OnInit {
            .subscribe((agt) => {
                console.log('paiement effectuée',agt);
            });
-       this.router.navigate(['/historiquePaiement']);
+           this.router.navigate(['/historiquePaiement']).then(() => {
+            window.location.reload();
+          });
    }
 
 

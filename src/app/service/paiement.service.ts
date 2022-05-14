@@ -14,32 +14,29 @@ const httpOptions = {
 })
 export class PaiementService {
 
-  apiURL: string = 'http://localhost:8080/caisses/paiement';
+  apiURL: string = 'http://localhost:8080/caisses';
   constructor(private http: HttpClient, private authService: AuthentifierService) {
   }
-  listerPaiements(numS: number): Observable<Paiement[]> {
+ 
 
+  listerPaiements(numS: number): Observable<Paiement[]>{
+    return this.http.get<Paiement[]>(this.apiURL+'/paiement/listerPaiement/'+numS);
+    }
 
-    return this.http.get<Paiement[]>(this.apiURL + '/listerPaiement/' + numS);
-  }
+ajouterPaiement( paiement: Paiement):Observable<Paiement>{
+    return this.http.post<Paiement>(this.apiURL+'/paiementAvecFacture/ajouterPaiement', paiement);
+    }
+    saisirAvance( paiement: Paiement):Observable<Paiement>{
+      return this.http.post<Paiement>(this.apiURL+'/paiementSansFacture/saisirAvance', paiement);
+      }
 
-  ajouterPaiement(paiement: Paiement): Observable<Paiement> {
-    
-
-    return this.http.post<Paiement>(this.apiURL + '/ajouterPaiement', paiement);
-  }
-
-  PayerFacture(factures: Facture[]) {
-    
-
-    const url = `${this.apiURL}/payer`;
+  PayerFacture(factures : Facture[]) {
+    const url = `${this.apiURL}/paiementAvecFacture/payer`;
     return this.http.put(url, factures);
-  }
-  AnnulerPaiement(factures: Facture[]): Observable<Paiement> {
-    
-
-    const url = `${this.apiURL}/annuler`;
-    return this.http.put<Paiement>(url, factures);
-  }
+    }
+AnnulerPaiement(factures : Facture[]):Observable<Paiement> {
+        const url = `${this.apiURL}/paiementAvecFacture/annuler`;
+        return this.http.put<Paiement>(url, factures);
+        }
 
 }

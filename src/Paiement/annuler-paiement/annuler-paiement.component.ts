@@ -73,6 +73,10 @@ export class AnnulerPaiementComponent implements OnInit {
          console.log(agt);
         console.log("annulation ok");
         });
+
+        this.router.navigate(['/historiquePaiement']).then(() => {
+          window.location.reload();
+        });
       //  this.router.navigate(['/historiquePaiement']);
     }
 

@@ -42,6 +42,11 @@ nombre:Encaissement[]=[];
 pratique:number =0;
 montant:number ;
 
+yes:number=0
+yes2:number=0;
+
+listM :any=[];
+
 box :Checkbox;
 
 p: SessionCaisse;
@@ -117,15 +122,28 @@ for(var n=0;n<this.currentSession.caisse.modes.length;n++){
      
  }
  valueInput(){
-   console.log("in value methode");
-   this.resmodeee+=this.resmode;
+   console.log(this.c.modes.filter((x)=>x.val!=null));
+this.listM=this.c.modes.filter((x)=>x.val!=null);
+this.yes2=0;
+   for(let r of this.listM){
+  
+    this.yes2+=r.val;
+     console.log(this.yes2);
+    // this.resultat=v;
+   }
+   //this.resultat=this.yes2;
+   console.log("res=",this.yes2);
+
+   this.resultat=this.yes2;
+  /* console.log("in value methode");
+   this.resmodeee+=this.c.modes.val ;
    console.log(this.resmodeee);
-   this.resultat=this.resmodeee;
+   this.resultat=this.resmodeee;*/
 
  }
   Calculer(){
-    this.resultat=this.val*50+this.val1*5+this.val2*20+this.val3*2+this.val4*10+this.val5+this.val6*5+this.val7*0.5+this.val8*0.2+this.val9*0.1+this.val10*0.05+this.val11*0.02+this.val12*0.01+this.resmodeee;
-
+    this.yes=this.val*50+this.val1*5+this.val2*20+this.val3*2+this.val4*10+this.val5+this.val6*5+this.val7*0.5+this.val8*0.2+this.val9*0.1+this.val10*0.05+this.val11*0.02+this.val12*0.01+this.yes2;
+this.resultat=this.yes;
  }
 
  FermerSession(s:SessionCaisse){
